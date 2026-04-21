@@ -1,9 +1,9 @@
 ---
-skill_id: "SKILL-NAME"
+skill_id: "skill-name"
 name: "Human Readable Name"
-skill_type :"instructional" or "code"
+skill_type :"instructional"
 tags: ["topic1", "topic2"]
-python_entry: set to "logic.py" for code skills, null for instructional
+python_entry: "logic.py"
 ---
 
 # Skill Name
