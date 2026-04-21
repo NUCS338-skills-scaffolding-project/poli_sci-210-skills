@@ -36,7 +36,6 @@ In the root of your repo, create a file called `metadata.yaml`:
 ````yaml
 course_id: "COURSE-01"
 course_name: "Your Course Name Here"
-team: "team-01"
 course_type: "humanities OR cs"
 spoc_contact: "admin@example.com" : 
 skills_used: ["skill-name-1", "skill-name-2"]
