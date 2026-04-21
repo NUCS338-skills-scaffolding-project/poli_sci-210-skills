@@ -1,7 +1,7 @@
 ---
 skill_id: "skill-name"
 name: "Human Readable Name"
-skill_type :"instructional"
+skill_type: "instructional"
 tags: ["topic1", "topic2"]
 python_entry: "logic.py"
 ---
