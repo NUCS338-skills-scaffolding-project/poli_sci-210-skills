@@ -1,0 +1,30 @@
+skill: argument-decomposition
+student: bryan
+source: students/bryan/submissions/RDC8.md
+assignment: research_design_critiques
+notes: |
+  Bryan's week 8 RDC on Gilbert's kidnapping-as-taxation paper. Testing whether
+  argument-decomposition flags his summary as flat or structured, and whether his
+  sub-claim/evidence pairings hold up.
+
+input:
+  student_summary: >-
+    Gilbert proves the taxation theory through four observable characteristics,
+    but the findings might not generalize beyond Colombia because of the unusual
+    role multinational corporations play there.
+  sub_claims:
+    - Gilbert's qualitative evidence supports the four observable characteristics
+    - The taxation theory holds within the Colombian context
+    - Generalizability is limited by Colombia-specific multinational presence
+  evidence_pairings:
+    Gilbert's qualitative evidence supports the four observable characteristics: >-
+      The interview data shows ELN and FARC kidnapped more frequently than
+      paramilitary groups, and her case studies cover targeting, infrastructure,
+      and behavioral response.
+    The taxation theory holds within the Colombian context: >-
+      Chiquita is one example where a multinational paid taxes rather than face
+      repeated kidnappings of its workers.
+    Generalizability is limited by Colombia-specific multinational presence: >-
+      Without large corporations tied to immobile resources like emeralds and
+      coca, the same coercive taxation pattern may not appear elsewhere.
+  structure_label: parallel
