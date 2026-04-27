@@ -46,6 +46,22 @@ def run(input):
   else:
     gap = None
 
+  observations = []
+  if stated:
+    observations.append("Warrant is stated (5+ words).")
+  else:
+    observations.append("Warrant is not stated — student gave evidence and claim but no bridge.")
+  if causal:
+    observations.append("Warrant uses causal/inferential language ('because', 'therefore', etc.).")
+  elif stated:
+    observations.append("Warrant lacks causal/inferential cue words.")
+  if assumed:
+    observations.append("Warrant flags an unstated assumption (uses 'obviously', 'clearly', etc.).")
+  if hedged:
+    observations.append("Warrant is hedged ('maybe', 'i think', 'kind of').")
+  if gap:
+    observations.append(f"Likely reasoning gap: {gap}.")
+
   # LLM stub: the hardest check — does the warrant *actually* bridge this
   # specific evidence to this specific claim — is a semantic judgment that
   # this keyword-based pass cannot make.
@@ -55,4 +71,5 @@ def run(input):
     "contains_unstated_assumption": assumed,
     "is_hedged": hedged,
     "likely_gap": gap,
+    "observations": observations,
   }

@@ -42,6 +42,20 @@ def run(input):
   short_after = len(after.split()) < 8
   choppy = (short_before or short_after) and not signals
 
+  observations = []
+  if named and matches_signal:
+    observations.append(f"Named the transition as '{label}'; the text carries that relationship's signal words.")
+  elif named and signals:
+    observations.append(f"Named the transition as '{label}', but the text uses different signals: {', '.join(signals)}.")
+  elif named:
+    observations.append(f"Named the transition as '{label}', but no transition signal appears in the text.")
+  elif signals:
+    observations.append(f"Did not name the transition; the text contains these signals: {', '.join(signals)}.")
+  else:
+    observations.append("No transition relationship named, and no signal words detected in the text.")
+  if choppy:
+    observations.append("Adjacent sentences read choppy — both short and unbridged by a transition.")
+
   # LLM stub: a semantic check could confirm whether the student's named
   # relationship actually matches the *meaning* of the two sentences, not
   # just presence of a keyword.
@@ -50,4 +64,5 @@ def run(input):
     "relationship_matches_signal": matches_signal,
     "signals_found": signals,
     "looks_choppy": choppy,
+    "observations": observations,
   }

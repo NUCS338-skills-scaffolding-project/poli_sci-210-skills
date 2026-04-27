@@ -26,5 +26,15 @@ def run(input):
   # Thin = short AND without committal language.
   is_thin = len(plan.split()) < 12 and not any(c in plan.lower() for c in COMMIT_CUES)
   nxt = idx + 1 if idx + 1 < len(SECTIONS) else None
+  observations = [f"Working on section: '{SECTIONS[idx]}'."]
+  if is_thin:
+    observations.append("Current plan reads as thin — short and lacks committal language ('I will', 'my point', etc.).")
+  else:
+    observations.append("Current plan reads as substantive — has length and/or commitment language.")
+  if nxt is not None:
+    observations.append(f"Next section after this: '{SECTIONS[nxt]}'.")
+  else:
+    observations.append("This is the last section — no next section.")
+
   # LLM stub: semantic check catches a substantive plan phrased unusually.
-  return {"section_name": SECTIONS[idx], "plan_is_thin": is_thin, "next_section": nxt}
+  return {"section_name": SECTIONS[idx], "plan_is_thin": is_thin, "next_section": nxt, "observations": observations}

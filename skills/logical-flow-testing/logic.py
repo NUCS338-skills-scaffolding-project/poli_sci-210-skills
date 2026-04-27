@@ -63,6 +63,20 @@ def run(input):
       weakest = i
       break
 
+  observations = []
+  named_kinds = [k for k in kinds if k]
+  observations.append(f"Sections classified as: {' → '.join(named_kinds) or 'none recognized'}.")
+  if follows:
+    observations.append("Section order follows the canonical critique flow (question → design → critique → change).")
+  else:
+    observations.append("Section order deviates from the canonical critique flow.")
+  if unclassified:
+    observations.append(f"Sections at index {unclassified} could not be classified by cue words.")
+  if weakest is not None:
+    observations.append(f"Weakest transition is between section {weakest} and section {weakest + 1}.")
+  else:
+    observations.append("No weak transition detected (or only one section provided).")
+
   # LLM stub: a semantic classifier can pick up sections that don't use the
   # cue words but still play one of these roles (e.g., an intro that never
   # says "question" but poses one).
@@ -71,4 +85,5 @@ def run(input):
     "follows_canonical": follows,
     "unclassified_sections": unclassified,
     "weakest_transition_index": weakest,
+    "observations": observations,
   }

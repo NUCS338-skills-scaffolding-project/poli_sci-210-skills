@@ -25,5 +25,14 @@ def run(input):
   has_imp = _has_any(text, IMPORTANCE_CUES)
   has_ex = _has_any(text, EXAMPLE_CUES)
   missing = [k for k, v in [("definition", has_def), ("importance", has_imp), ("example", has_ex)] if not v]
+  present = [k for k in ("definition", "importance", "example") if k not in missing]
+  observations = []
+  if present:
+    observations.append(f"Explanation contains: {', '.join(present)}.")
+  if missing:
+    observations.append(f"Explanation missing: {', '.join(missing)}.")
+  else:
+    observations.append("Explanation hits all three components (definition, importance, example).")
+
   # LLM stub: cues miss paraphrased explanations; escalate when missing looks wrong.
-  return {"has_definition": has_def, "has_importance": has_imp, "has_example": has_ex, "missing": missing}
+  return {"has_definition": has_def, "has_importance": has_imp, "has_example": has_ex, "missing": missing, "observations": observations}

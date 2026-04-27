@@ -33,5 +33,16 @@ def run(input):
     if len(obj_words & content_words) >= 2:
       matched = i
       break
+
+  observations = []
+  if is_surface:
+    observations.append("Connection reads as surface-level — mostly restates the week topic.")
+  else:
+    observations.append("Connection adds substance beyond the week topic words.")
+  if matched is not None:
+    observations.append(f"Connection matches learning objective #{matched + 1}: '{objectives[matched]}'.")
+  else:
+    observations.append("Connection did not match any of the four course learning objectives.")
+
   # LLM stub: if keyword overlap misses, a semantic match could catch paraphrases.
-  return {"is_surface": is_surface, "matched_objective_idx": matched}
+  return {"is_surface": is_surface, "matched_objective_idx": matched, "observations": observations}

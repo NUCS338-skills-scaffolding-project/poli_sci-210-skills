@@ -43,6 +43,25 @@ def run(input):
   joined_pairings = " ".join(pairings.values()).lower()
   matches = structure_named and any(cue in joined_pairings for cue in STRUCTURE_CUES[label])
 
+  observations = []
+  if is_flat:
+    observations.append("Summary is flat — one bundled claim, no sub-claim structure.")
+  elif len(sub_claims) == 0:
+    observations.append("Summary uses connective language but no named sub-claims yet.")
+  else:
+    observations.append(f"Summary breaks into {len(sub_claims)} sub-claim(s) with connective language.")
+  if missing and sub_claims:
+    listed = ", ".join(f"'{m}'" for m in missing)
+    observations.append(f"{len(missing)} of {len(sub_claims)} sub-claim(s) lack evidence pairing: {listed}.")
+  elif sub_claims and not missing:
+    observations.append("Every named sub-claim is paired with evidence cues.")
+  if structure_named and matches:
+    observations.append(f"Named structure as '{label}' and pairing prose carries that structure's cues.")
+  elif structure_named and not matches:
+    observations.append(f"Named structure as '{label}' but pairing prose lacks that structure's cue words.")
+  elif sub_claims:
+    observations.append("Sub-claims are present but no structure label was attached.")
+
   # LLM stub: a semantic check catches decomposition phrased without cue words
   # (e.g., a student who names structure without using "chain" / "parallel").
   return {
@@ -51,4 +70,5 @@ def run(input):
     "claims_without_evidence": missing,
     "structure_named": structure_named,
     "structure_matches_language": matches,
+    "observations": observations,
   }

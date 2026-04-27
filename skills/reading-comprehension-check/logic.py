@@ -24,5 +24,15 @@ def run(input):
   hedges = sum(p in lowered for p in THIN_PHRASES)
   has_ref = bool(SECTION_PAT.search(text))
   is_thin = word_count < 15 or (hedges >= 2 and not has_ref)
+  observations = []
+  if is_thin:
+    observations.append(f"At the '{layer}' layer, response reads as thin — short or hedged without textual reference.")
+  else:
+    observations.append(f"At the '{layer}' layer, response is substantive (length and/or specificity OK).")
+  if has_ref:
+    observations.append("Response cites a section, page, figure, or table from the reading.")
+  else:
+    observations.append("Response does not cite any section/page/figure from the reading.")
+
   # LLM stub: a semantic check could catch substantive-but-hedged answers.
-  return {"is_thin": is_thin, "has_text_reference": has_ref, "layer": layer}
+  return {"is_thin": is_thin, "has_text_reference": has_ref, "layer": layer, "observations": observations}

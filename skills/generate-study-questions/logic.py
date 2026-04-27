@@ -27,4 +27,5 @@ def run(input):
     f"Generate one {level}-difficulty {fmt} question about '{topic}'. "
     f"Do NOT reveal the answer. The question tests a student; never pre-answer it."
   )
-  return {"template": template, "llm_prompt": llm_prompt}
+  observations = [f"Generated a {level}-difficulty {fmt} question template for '{topic}'."]
+  return {"template": template, "llm_prompt": llm_prompt, "observations": observations}

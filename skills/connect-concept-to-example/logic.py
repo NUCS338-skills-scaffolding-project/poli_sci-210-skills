@@ -27,5 +27,16 @@ def run(input):
     f"What if we changed one detail so the example no longer had "
     f"'{feature}' — would it still count? Why or why not?"
   )
+  concept = input.get("concept", "")
+  observations = []
+  if contains:
+    observations.append(f"Example contains the defining feature ('{feature}') of '{concept}'.")
+  else:
+    observations.append(f"Example does not surface the defining feature ('{feature}') of '{concept}'.")
+  if concrete:
+    observations.append("Example is concrete — uses agent/action language ('I', 'we', 'flip', etc.).")
+  else:
+    observations.append("Example is abstract — no concrete agent or action verbs detected.")
+
   # LLM stub: a semantic feature match is more robust than keyword cues.
-  return {"contains_feature": contains, "is_example_concrete": concrete, "suggested_break": break_q}
+  return {"contains_feature": contains, "is_example_concrete": concrete, "suggested_break": break_q, "observations": observations}

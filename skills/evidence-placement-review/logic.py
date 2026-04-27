@@ -46,6 +46,18 @@ def run(input):
   # OR the evidence sits >= 1 paragraph away from its claim.
   disconnected = (not articulated and looks_like_evidence) or distance >= 1
 
+  observations = []
+  observations.append("Claim is articulated." if articulated else "Claim is not articulated yet (fewer than 4 words).")
+  position = "before" if before else "after"
+  if same_para:
+    observations.append(f"Evidence sits in the same paragraph as the claim, positioned {position} it.")
+  else:
+    observations.append(f"Evidence is {distance} paragraph(s) {position} the claim — not adjacent.")
+  if disconnected:
+    observations.append("Evidence and claim are disconnected (distance >= 1 paragraph or claim missing).")
+  else:
+    observations.append("Evidence and claim are tightly placed.")
+
   # LLM stub: a semantic check can confirm whether the evidence *actually*
   # supports the claim, which keyword distance cannot.
   return {
@@ -54,4 +66,5 @@ def run(input):
     "paragraph_distance": distance,
     "evidence_before_claim": before,
     "is_disconnected": disconnected,
+    "observations": observations,
   }
