@@ -24,6 +24,36 @@ Leads students to see a complex argument as a hierarchy — a thesis sitting abo
 - One level at a time. Don't jump from thesis to evidence — walk down a step.
 - Work from the student's initial understanding — even if incomplete, it's a starting point.
 - If they haven't read the text carefully, send them back — this skill doesn't work on half-remembered readings.
+- Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
+
+## Tutor Pre-Read & Notes
+Before Step 1, silently build your own canonical decomposition of the paper: a candidate thesis, the 2–4 main claims you'd nominate as sitting directly under it, and one piece of support under each. Write it to a scratchpad at:
+
+```
+skills/argument-decomposition/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
+```
+
+Structure:
+```
+# argument-decomposition — <student> — <timestamp>
+
+## My Pre-Read
+- Thesis: <one sentence>
+- Main claims:
+  1. <claim>
+  2. <claim>
+  3. <claim>
+- Sub-supports: { claim1: [...], claim2: [...], claim3: [...] }
+- Shape: <chain / parallel / mixed — and why>
+
+## Student's Take
+## Divergences
+## Resolved
+## Open
+## Completion Notes
+```
+
+Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences between your pre-read and theirs become your scaffolding targets.
 
 ## Flow
 
@@ -36,10 +66,11 @@ Ask: "In your own words, what's the author arguing? Don't worry about getting it
 Tell them, briefly: "Arguments have levels. There's usually a thesis on top — the single big claim the paper is making. Underneath are main supporting claims — the things the author has to convince you of for the thesis to land. Under those are sub-claims and evidence. Our job is to figure out what sits at each level."
 - One or two sentences, then move on. Don't make this a lecture.
 
-### Step 3 — Pin down the thesis (top level)
+### Step 3 — Pin down the thesis (top level) · *reconcile beat*
 Ask: "Looking at your summary — is that the thesis, or is it one of the supporting claims?"
 - If they're not sure → ask: "What does the author most want you to believe by the end? If you could only walk away with one sentence, what would it be?"
 - Push them to phrase the thesis as a *claim*, not a topic ("she writes about kidnapping" → "she argues that kidnapping is strategic").
+- **Reconcile here:** compare their thesis against the one in your pre-read. If they diverge, log it under `Divergences` in the scratchpad — that gap is what to probe in Steps 4–5. Don't reveal your version; use it to choose which questions to ask.
 - Once they have a thesis they're confident in → Step 4.
 
 ### Step 4 — Map the main supporting claims (one level down)
@@ -59,6 +90,11 @@ Ask: "Now look at the whole thing you've built. How would you describe its shape
 - Close with: "What's something you understand about this argument now that you didn't when you started?"
 - End with: "Now that you've mapped the levels, you might use `reading-comprehension-check` to make sure you understand each piece deeply, or `compare-two-readings` if you need to relate this to another text."
 
+## Completion Criteria
+**Heuristic gate (logic.py):** `done` flips true when `levels_built >= 3` (thesis named, ≥2 main claims, ≥1 sub-support under at least one main claim) AND `shape_articulated` AND `main_claims_without_support` is empty. `done_reasons` lists which gates fired.
+
+**Narrative override:** end early if the student has clearly *seen* the levels and the shape even without articulating every sub-support — you're after the move, not exhaustive mapping. Continue past the gate if a divergence in the scratchpad is still open and important (e.g., they named a piece of evidence as a main claim and haven't relocated it). When you decide done, write the Completion Notes block in the scratchpad and close with the forward-pointer line in Step 6.
+
 ## Safe Output Types
 - Questions about which level a given statement is operating at.
 - Prompts to climb up or down one level (thesis → main claim → sub-claim → evidence).
@@ -73,6 +109,9 @@ Ask: "Now look at the whole thing you've built. How would you describe its shape
 - Evaluating whether the argument is *good* — that's a different skill.
 - Forcing levels onto a simple argument that genuinely is one claim.
 - Doing this with a student who hasn't read the text — redirect them first.
+- Long paragraphs of exposition or lecture-style explanations.
+- Pasting your pre-read decomposition at the student as "the answer."
+- Continuing past the completion criteria once they're satisfied.
 
 ## Example Exchange
 > **Student:** I read the Gilbert paper on kidnapping. Her argument is that armed groups use kidnapping strategically.

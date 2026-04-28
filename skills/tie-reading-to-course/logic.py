@@ -16,12 +16,27 @@ def run(input):
     "student_text": str,
     "week_topic": str,
     "learning_objectives": list[str] | None,
+    "tutor_pre_read": {                  # tutor's silent canonical read (optional)
+      "week_link": str | None,           # one sentence
+      "learning_objective_idx": int | None,
+      "prior_week_echo": str | None,     # note or None
+    } | None,
   }
-  :return: {"is_surface": bool, "matched_objective_idx": int | None}
+  :return: {
+    "is_surface": bool,
+    "matched_objective_idx": int | None,
+    "divergence": {                      # student vs. tutor_pre_read, if pre-read provided
+      "objective_diverges": bool,        # student's matched idx differs from tutor's
+    } | None,
+    "done": bool,
+    "done_reasons": list[str],
+    "observations": list[str],
+  }
   """
   text = input.get("student_text", "").lower()
   topic = input.get("week_topic", "").lower()
   objectives = input.get("learning_objectives") or OBJECTIVES
+  pre_read = input.get("tutor_pre_read") or None
 
   topic_words = {w for w in topic.split() if len(w) > 2}
   content_words = {w for w in text.split() if len(w) > 3}
@@ -34,6 +49,15 @@ def run(input):
       matched = i
       break
 
+  divergence = None
+  if pre_read:
+    pre_idx = pre_read.get("learning_objective_idx")
+    divergence = {
+      "objective_diverges": (
+        pre_idx is not None and matched is not None and pre_idx != matched
+      ),
+    }
+
   observations = []
   if is_surface:
     observations.append("Connection reads as surface-level — mostly restates the week topic.")
@@ -44,5 +68,20 @@ def run(input):
   else:
     observations.append("Connection did not match any of the four course learning objectives.")
 
-  # LLM stub: if keyword overlap misses, a semantic match could catch paraphrases.
-  return {"is_surface": is_surface, "matched_objective_idx": matched, "observations": observations}
+  done_reasons = []
+  if not is_surface:
+    done_reasons.append("connection is not surface-level")
+  if matched is not None:
+    done_reasons.append(f"connection matches objective #{matched + 1}")
+  done = (not is_surface) and matched is not None
+
+  # LLM stub: if keyword overlap misses, a semantic match could catch
+  # paraphrases, and reconcile against tutor_pre_read more deeply.
+  return {
+    "is_surface": is_surface,
+    "matched_objective_idx": matched,
+    "divergence": divergence,
+    "done": done,
+    "done_reasons": done_reasons,
+    "observations": observations,
+  }

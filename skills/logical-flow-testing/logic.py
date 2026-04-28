@@ -30,16 +30,30 @@ def run(input):
   :param input: {
     "section_summaries": list[str],     # one-sentence summary per section in order
     "student_transitions": list[str],   # why each section follows the previous (optional)
+    "tutor_pre_read": {                 # tutor's silent transition read (optional)
+      "transitions": list[{
+        "from": str,
+        "to": str,
+        "kind": str,                    # continuation/contrast/escalation/etc.
+      }] | None,
+    } | None,
   }
   :return: {
     "classified_kinds": list[str | None],
     "follows_canonical": bool,
     "unclassified_sections": list[int],
     "weakest_transition_index": int | None,  # 0 means between section 0 and 1
+    "divergence": {                          # student vs. tutor_pre_read, if pre-read provided
+      "transition_count_delta": int,         # student transitions - pre-read transitions
+    } | None,
+    "done": bool,
+    "done_reasons": list[str],
+    "observations": list[str],
   }
   """
   sections = input.get("section_summaries") or []
   transitions = input.get("student_transitions") or []
+  pre_read = input.get("tutor_pre_read") or None
 
   kinds = [_classify(s) for s in sections]
   unclassified = [i for i, k in enumerate(kinds) if k is None]
@@ -63,6 +77,13 @@ def run(input):
       weakest = i
       break
 
+  divergence = None
+  if pre_read:
+    pre_transitions = pre_read.get("transitions") or []
+    divergence = {
+      "transition_count_delta": len(transitions) - len(pre_transitions),
+    }
+
   observations = []
   named_kinds = [k for k in kinds if k]
   observations.append(f"Sections classified as: {' → '.join(named_kinds) or 'none recognized'}.")
@@ -77,13 +98,26 @@ def run(input):
   else:
     observations.append("No weak transition detected (or only one section provided).")
 
+  done_reasons = []
+  if follows:
+    done_reasons.append("section order follows canonical flow")
+  if not unclassified:
+    done_reasons.append("all sections classified")
+  if weakest is None:
+    done_reasons.append("no weak transition detected")
+  done = follows and not unclassified and weakest is None
+
   # LLM stub: a semantic classifier can pick up sections that don't use the
   # cue words but still play one of these roles (e.g., an intro that never
-  # says "question" but poses one).
+  # says "question" but poses one), and reconcile transition kinds against
+  # tutor_pre_read.
   return {
     "classified_kinds": kinds,
     "follows_canonical": follows,
     "unclassified_sections": unclassified,
     "weakest_transition_index": weakest,
+    "divergence": divergence,
+    "done": done,
+    "done_reasons": done_reasons,
     "observations": observations,
   }

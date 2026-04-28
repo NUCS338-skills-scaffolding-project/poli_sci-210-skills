@@ -21,6 +21,32 @@ Walk the student through critically evaluating an AI chatbot's explanation — c
 - Compare against course material, not your own knowledge. If the student needs to check a claim, send them to the textbook or lecture notes.
 - Treat the AI as a source, not an authority. Credibility, gaps, and framing all matter.
 - If the student hasn't compared the AI's answer to anything from the course yet, that's where you start.
+- Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
+
+## Tutor Pre-Read & Notes
+Before Step 1, silently form your own assessment of the AI response: its strengths, its gaps, and what the course material would correct. Write it to a scratchpad at:
+
+```
+skills/reflect-on-ai-response/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
+```
+
+Structure:
+```
+# reflect-on-ai-response — <student> — <timestamp>
+
+## My Pre-Read
+- AI strengths: <note>
+- AI gaps: <note>
+- Course corrections: <what the course material would correct>
+
+## Student's Take
+## Divergences
+## Resolved
+## Open
+## Completion Notes
+```
+
+Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
 
 ## Flow
 ### Step 1 — Name the concept and the AI's claim
@@ -32,13 +58,19 @@ Ask: "How does that compare to what the textbook or lecture said?"
 - Haven't checked yet → stop. "Go check EMPS or your notes first, then come back." End the skill.
 - Have checked → Step 3.
 
-### Step 3 — Hunt for one gap
+### Step 3 — Hunt for one gap · *reconcile beat*
 Ask: "What did the AI *not* say that the course would have emphasized? Or: what did it over-simplify?" Accept one gap. Don't list them all.
+- **Reconcile here:** when the student names a gap or strength, compare it to the gaps and corrections in your pre-read. If they miss a gap you flagged (especially one the course explicitly contradicts), log under `Divergences` and use it to choose your next probe. Don't reveal your gap list.
 
 ### Step 4 — Credibility of recommended sources
 If the AI cited sources, ask: "Do those sources look credible? Would you cite them in a paper?"
 - No sources cited → "why do you think the AI didn't provide any, and what does that mean for the answer's trustworthiness?"
 - End with: "what's one sentence you'd write in your memo about the quality of this explanation?"
+
+## Completion Criteria
+**Heuristic gate (logic.py):** `done` flips true when `has_sources` OR (the student has named at least one gap AND named at least one course-source correction — passed in as `gaps_named` and `corrections_named` flags). `done_reasons` lists which gates fired.
+
+**Narrative override:** end early if the student demonstrates skepticism with one sharp correction even without enumerating every gap — one well-aimed critique is the whole memo. Continue past the gate if `ai_only_terms` includes content the course explicitly contradicts and the student hasn't noticed it. When you decide done, write the Completion Notes block in the scratchpad.
 
 ## Safe Output Types
 - Prompts to summarize the AI's claim in one sentence.
@@ -51,6 +83,9 @@ If the AI cited sources, ask: "Do those sources look credible? Would you cite th
 - Explaining the concept yourself — the *memo* is the point, not the concept.
 - Commenting on which chatbot they used ("Copilot vs. ChatGPT").
 - Writing the memo for them — that's `scaffold-written-assignment`.
+- Long paragraphs of exposition or lecture-style explanations.
+- Pasting your pre-read at the student as "the answer."
+- Continuing past the completion criteria once they're satisfied.
 
 ## Example Exchange
 > **Student:** For my week 6 AI memo, I asked Copilot to explain external validity. It gave me a paragraph. Is it right?
