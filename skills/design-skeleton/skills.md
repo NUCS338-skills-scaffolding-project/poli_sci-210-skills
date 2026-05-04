@@ -14,10 +14,10 @@ python_entry: "logic.py"
 # Design Skeleton
 
 ## Description
-Granular skill in Phase 2 (`extract-research-design`) of the research design critique. The student fills in seven canonical research-design fields for the paper: research question, unit of analysis, sample, IV/treatment, DV/outcome, identification strategy, and comparison. The pedagogical move is *forcing the design into a structured form*: students who can paraphrase a paper often can't say what its unit of analysis is. Method-aware labels handle the cases where a field doesn't apply directly (e.g., a theory-only paper has no "treatment").
+Granular skill in Phase 2 (`map-design`) of the research design critique. The student fills in seven canonical research-design fields for the paper: research question, unit of analysis, sample, IV/treatment, DV/outcome, identification strategy, and comparison. The pedagogical move is *forcing the design into a structured form*: students who can paraphrase a paper often can't say what its unit of analysis is. Method-aware labels handle the cases where a field doesn't apply directly (e.g., a theory-only paper has no "treatment").
 
 ## When to Trigger
-- Opened by the `extract-research-design` orchestrator as the first skill in its chain.
+- Opened by the `map-design` orchestrator as the first skill in its chain.
 - Direct invocation: a student says "I don't know how to describe what they did methodologically" or "what's the design here?"
 - Not for forming a critique. Filling the skeleton is description; judging it is Phase 3.
 

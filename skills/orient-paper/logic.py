@@ -1,13 +1,13 @@
-# logic.py — form-critique phase orchestrator
-# Phase 3 of critique-design. Tracks progress through three granular
-# skills (threats, scope, alternatives) for a single article. Receives week +
-# method + article_path + prior_session_logs (Phase 1 + Phase 2) from the
-# main orchestrator and threads them downward. Pure function; no side effects.
+# logic.py — orient-paper phase orchestrator
+# Phase 1 of critique-design. Tracks progress through three granular
+# skills (orient, trace, probe) for a single article. Receives week + method
+# + article_path from the main orchestrator and threads them downward so each
+# granular skill can branch on method. Pure function; no side effects.
 
 CHAIN = [
-  "inference-threats",
-  "scope-check",
-  "alt-designs",
+  "first-pass-orient",
+  "trace-evidence",
+  "author-choices",
 ]
 
 VALID_METHODS = (
@@ -24,32 +24,31 @@ VALID_METHODS = (
 def run(input):
   """
   :param input: {
-    "week": int,
-    "method": str,
+    "week": int,                              # 3..9
+    "method": str,                            # one of VALID_METHODS
     "article_path": str,
-    "prior_session_logs": list[str] | None,   # main orchestrator passes [Phase 1 log, Phase 2 log]
+    "prior_session_logs": list[str] | None,   # from main orchestrator (empty for Phase 1)
     "completed_skills": list[{
-      "skill_id": str,
+      "skill_id": str,                        # one of CHAIN
       "scratchpad_path": str,
-      "done": bool,
-      "user_confirmed": bool,
+      "done": bool,                           # sub-skill heuristic gate
+      "user_confirmed": bool,                 # student said move on
     }] | None,
-    "current_skill": str | None,
-    "preread_dispatched": str | None,
+    "current_skill": str | None,              # skill currently in dialogue
+    "preread_dispatched": str | None,         # skill_id of in-flight pre-read
   }
   :return: {
-    "next_skill": str | None,
-    "preread_target": str | None,
+    "next_skill": str | None,                 # next granular skill to open
+    "preread_target": str | None,             # skill the subagent should pre-read
     "needs_user_confirm": bool,
-    "chain_progress": str,
-    "downstream_inputs": {
+    "chain_progress": str,                    # e.g. "1 of 3"
+    "downstream_inputs": {                    # to thread into sub-skill calls
       "week": int,
       "method": str,
       "article_path": str,
       "prior_session_logs": list[str],
     },
-    "thin_foundation_warning": bool,           # true when prior logs are missing
-    "done": bool,
+    "done": bool,                             # phase complete
     "done_reasons": list[str],
     "observations": list[str],
   }
@@ -70,8 +69,6 @@ def run(input):
     raise ValueError("article_path is required and must be a non-empty string")
   if not isinstance(prior_logs, list):
     raise ValueError("prior_session_logs must be a list")
-
-  thin_foundation = len(prior_logs) < 2
 
   completed = input.get("completed_skills") or []
   if not isinstance(completed, list):
@@ -98,13 +95,13 @@ def run(input):
   if current is not None and current != next_skill:
     raise ValueError(
       f"current_skill={current!r} does not match expected next skill {next_skill!r} "
-      f"given {n_done} completed skill(s) in the form-critique chain"
+      f"given {n_done} completed skill(s) in the orient-paper chain"
     )
 
   preread_dispatched = input.get("preread_dispatched")
   if preread_dispatched is not None and preread_dispatched not in CHAIN:
     raise ValueError(
-      f"preread_dispatched={preread_dispatched!r} is not a member of the form-critique chain"
+      f"preread_dispatched={preread_dispatched!r} is not a member of the orient-paper chain"
     )
 
   done = next_skill is None
@@ -115,21 +112,15 @@ def run(input):
   needs_user_confirm = (n_done > 0) and not done
 
   observations = [
-    f"Phase: form-critique (Phase 3).",
+    f"Phase: orient-paper (Phase 1).",
     f"Week: {week}, Method: {method}.",
     f"Article: {article_path}.",
-    f"Prior phase logs: {len(prior_logs)} ({prior_logs or 'none'}).",
     f"Completed: {n_done} ({', '.join(c.get('skill_id', '?') for c in completed) or 'none'}).",
   ]
-  if thin_foundation:
-    observations.append(
-      "WARNING: thin foundation — Phase 3 expects both Phase 1 and Phase 2 session logs. "
-      "Push back to the main orchestrator before opening the first sub-skill."
-    )
   if next_skill:
     observations.append(f"Next sub-skill to open: {next_skill}.")
   else:
-    observations.append("Phase complete — synthesis becomes the critique kernel.")
+    observations.append("Phase complete — no further sub-skills.")
   if preread_target:
     observations.append(f"Pre-read target for subagent: {preread_target}.")
   else:
@@ -148,7 +139,6 @@ def run(input):
       "article_path": article_path,
       "prior_session_logs": prior_logs,
     },
-    "thin_foundation_warning": thin_foundation,
     "done": done,
     "done_reasons": done_reasons,
     "observations": observations,

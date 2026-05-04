@@ -14,10 +14,10 @@ python_entry: "logic.py"
 # First-Pass Orient
 
 ## Description
-Granular skill in Phase 1 (`investigate-reading`) of the research design critique. Forces the student to articulate the paper's puzzle (what's it asking?) and answer (what does it claim/find?) in their own words, one sentence each. The pedagogical move is *synthesis under constraint*: parroting the abstract is the failure mode. Method-aware probing helps when the student is stuck.
+Granular skill in Phase 1 (`orient-paper`) of the research design critique. Forces the student to articulate the paper's puzzle (what's it asking?) and answer (what does it claim/find?) in their own words, one sentence each. The pedagogical move is *synthesis under constraint*: parroting the abstract is the failure mode. Method-aware probing helps when the student is stuck.
 
 ## When to Trigger
-- Opened by the `investigate-reading` orchestrator as the first skill in its chain.
+- Opened by the `orient-paper` orchestrator as the first skill in its chain.
 - Direct invocation: a student says "I read the paper but I'm not sure what it's actually about" or "can you help me figure out the main argument?"
 - Not for forming critique — that's Phase 3. Not for tracing evidence — that's the next skill in this phase.
 
@@ -112,4 +112,4 @@ When you have both sentences and the framing isn't thin, write the Completion No
 >
 > **Student:** They find that billionaires from countries with weaker institutions are more likely to enter politics directly, especially when their wealth is in politically exposed sectors.
 >
-> **Tutor:** That's a clean one-sentence puzzle and one-sentence answer. Done with this step. *(writes Completion Notes; phase orchestrator advances to trace-claim-to-evidence)*
+> **Tutor:** That's a clean one-sentence puzzle and one-sentence answer. Done with this step. *(writes Completion Notes; phase orchestrator advances to trace-evidence)*

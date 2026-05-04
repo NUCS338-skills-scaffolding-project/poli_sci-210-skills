@@ -86,7 +86,7 @@ Call `logic.py` with the confirmed mode and an empty `completed_skills`. Read ba
 - `preread_target` — the skill to pre-read after the first one opens (will be `chain[1]` if the chain has ≥ 2 skills).
 - `chain_progress` — for orienting the student.
 
-Tell the student briefly what's coming. Example: "We're going to walk through five skills in order: argument-decomposition → logical-flow-testing → evidence-placement-review → reasoning-evaluation → cohesion-strengthening. Each one teaches a different revision move. We'll do them one at a time."
+Tell the student briefly what's coming. Example: "We're going to walk through five skills in order: decompose-arg → flow-check → evidence-placement → reasoning-check → cohesion-check. Each one teaches a different revision move. We'll do them one at a time."
 
 ### Step 3 — Open the first skill (synchronous pre-read)
 For the first skill in the chain, do the pre-read synchronously:
@@ -118,7 +118,7 @@ Task:
 
 Constraints:
 - Silent pre-read only. The student will work through this skill in dialogue with the main tutor; your job is to leave breadcrumbs for that conversation, not to run the skill yourself.
-- Build on prior scratchpads where relevant. For example, the reasoning-evaluation pre-read should know which warrants the argument-decomposition step surfaced.
+- Build on prior scratchpads where relevant. For example, the reasoning-check pre-read should know which warrants the decompose-arg step surfaced.
 ```
 
 Substitute the absolute paths and the next skill's id. Do not block on the subagent — fire it and continue.
@@ -176,16 +176,16 @@ If the student abandons mid-chain (closes the conversation, says "stop"), finali
 ## Example Exchange
 > **Student:** Can you analyze my paper at `students/bryan/submissions/Foreign Policy Research Paper.pdf`?
 >
-> **Tutor:** Reading it now. *(reads, classifies)* This looks like a draft — about 900 words of prose with three sections and a working thesis. I'd run the draft-mode chain: argument-decomposition → logical-flow-testing → evidence-placement-review → reasoning-evaluation → cohesion-strengthening, one at a time. Want me to start there, or are you only at the planning stage?
+> **Tutor:** Reading it now. *(reads, classifies)* This looks like a draft — about 900 words of prose with three sections and a working thesis. I'd run the draft-mode chain: decompose-arg → flow-check → evidence-placement → reasoning-check → cohesion-check, one at a time. Want me to start there, or are you only at the planning stage?
 >
 > **Student:** Yeah it's a draft, go ahead.
 >
-> **Tutor:** Starting with argument-decomposition. *(does its own pre-read; opens the skill in dialogue; in parallel, dispatches a subagent to pre-read logical-flow-testing)* In your own words, what's the paper arguing? Don't worry about getting it perfect.
+> **Tutor:** Starting with decompose-arg. *(does its own pre-read; opens the skill in dialogue; in parallel, dispatches a subagent to pre-read flow-check)* In your own words, what's the paper arguing? Don't worry about getting it perfect.
 >
-> *(student works through argument-decomposition over several turns; when the gate fires)*
+> *(student works through decompose-arg over several turns; when the gate fires)*
 >
-> **Tutor:** You've named the thesis, three main claims under it, and described the shape — that's the move this skill was after. Ready to move to logical-flow-testing?
+> **Tutor:** You've named the thesis, three main claims under it, and described the shape — that's the move this skill was after. Ready to move to flow-check?
 >
 > **Student:** Yes.
 >
-> **Tutor:** *(appends per-skill block to session log; reads logical-flow-testing's pre-read scratchpad written by the subagent; dispatches subagent for evidence-placement-review)* Logical-flow-testing now. Are you looking at the whole draft or is there a specific section that feels off?
+> **Tutor:** *(appends per-skill block to session log; reads flow-check's pre-read scratchpad written by the subagent; dispatches subagent for evidence-placement)* Logical-flow-testing now. Are you looking at the whole draft or is there a specific section that feels off?

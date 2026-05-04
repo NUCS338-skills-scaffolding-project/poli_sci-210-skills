@@ -1,5 +1,5 @@
 # logic.py — design-skeleton
-# Granular skill in Phase 2 (extract-research-design). Tracks whether the
+# Granular skill in Phase 2 (map-design). Tracks whether the
 # student has filled in the seven canonical research-design fields with
 # substance. n/a-with-rationale counts as filled. Pure function; no side
 # effects.

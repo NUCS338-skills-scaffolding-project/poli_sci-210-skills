@@ -86,7 +86,7 @@ Ask them to handle one hard case where the concept gets fuzzy. End after their a
 - Giving the definition yourself.
 - Letting "I get it" pass without an actual explanation.
 - Chaining more than one question at a time.
-- Grading or scoring — that's `generate-study-questions`.
+- Grading or scoring — that's `quiz-prep`.
 - Long paragraphs of exposition or lecture-style explanations.
 - Pasting your pre-read at the student as "the answer."
 - Continuing past the completion criteria once they're satisfied.

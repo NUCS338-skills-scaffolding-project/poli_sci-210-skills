@@ -1,5 +1,5 @@
 # logic.py — first-pass-orient
-# Granular skill in Phase 1 (investigate-reading). Tracks whether the student
+# Granular skill in Phase 1 (orient-paper). Tracks whether the student
 # has produced a clean one-sentence puzzle and one-sentence answer in their
 # own words. Pure function; no side effects.
 

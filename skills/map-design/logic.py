@@ -1,13 +1,13 @@
-# logic.py — form-critique phase orchestrator
-# Phase 3 of critique-design. Tracks progress through three granular
-# skills (threats, scope, alternatives) for a single article. Receives week +
-# method + article_path + prior_session_logs (Phase 1 + Phase 2) from the
-# main orchestrator and threads them downward. Pure function; no side effects.
+# logic.py — map-design phase orchestrator
+# Phase 2 of critique-design. Tracks progress through three granular
+# skills (skeleton, operationalization, alignment) for a single article.
+# Receives week + method + article_path + prior_session_logs from the main
+# orchestrator and threads them downward. Pure function; no side effects.
 
 CHAIN = [
-  "inference-threats",
-  "scope-check",
-  "alt-designs",
+  "design-skeleton",
+  "op-check",
+  "method-align",
 ]
 
 VALID_METHODS = (
@@ -27,7 +27,7 @@ def run(input):
     "week": int,
     "method": str,
     "article_path": str,
-    "prior_session_logs": list[str] | None,   # main orchestrator passes [Phase 1 log, Phase 2 log]
+    "prior_session_logs": list[str] | None,   # main orchestrator passes [Phase 1 log]
     "completed_skills": list[{
       "skill_id": str,
       "scratchpad_path": str,
@@ -48,7 +48,6 @@ def run(input):
       "article_path": str,
       "prior_session_logs": list[str],
     },
-    "thin_foundation_warning": bool,           # true when prior logs are missing
     "done": bool,
     "done_reasons": list[str],
     "observations": list[str],
@@ -70,8 +69,10 @@ def run(input):
     raise ValueError("article_path is required and must be a non-empty string")
   if not isinstance(prior_logs, list):
     raise ValueError("prior_session_logs must be a list")
-
-  thin_foundation = len(prior_logs) < 2
+  if len(prior_logs) < 1:
+    # Phase 2 always runs after Phase 1; missing the Phase 1 log is a contract
+    # violation from the main orchestrator. Allow it but flag.
+    pass
 
   completed = input.get("completed_skills") or []
   if not isinstance(completed, list):
@@ -98,13 +99,13 @@ def run(input):
   if current is not None and current != next_skill:
     raise ValueError(
       f"current_skill={current!r} does not match expected next skill {next_skill!r} "
-      f"given {n_done} completed skill(s) in the form-critique chain"
+      f"given {n_done} completed skill(s) in the map-design chain"
     )
 
   preread_dispatched = input.get("preread_dispatched")
   if preread_dispatched is not None and preread_dispatched not in CHAIN:
     raise ValueError(
-      f"preread_dispatched={preread_dispatched!r} is not a member of the form-critique chain"
+      f"preread_dispatched={preread_dispatched!r} is not a member of the map-design chain"
     )
 
   done = next_skill is None
@@ -115,21 +116,20 @@ def run(input):
   needs_user_confirm = (n_done > 0) and not done
 
   observations = [
-    f"Phase: form-critique (Phase 3).",
+    f"Phase: map-design (Phase 2).",
     f"Week: {week}, Method: {method}.",
     f"Article: {article_path}.",
     f"Prior phase logs: {len(prior_logs)} ({prior_logs or 'none'}).",
     f"Completed: {n_done} ({', '.join(c.get('skill_id', '?') for c in completed) or 'none'}).",
   ]
-  if thin_foundation:
+  if len(prior_logs) < 1:
     observations.append(
-      "WARNING: thin foundation — Phase 3 expects both Phase 1 and Phase 2 session logs. "
-      "Push back to the main orchestrator before opening the first sub-skill."
+      "WARNING: no prior phase logs supplied — Phase 2 expects Phase 1's session log."
     )
   if next_skill:
     observations.append(f"Next sub-skill to open: {next_skill}.")
   else:
-    observations.append("Phase complete — synthesis becomes the critique kernel.")
+    observations.append("Phase complete — no further sub-skills.")
   if preread_target:
     observations.append(f"Pre-read target for subagent: {preread_target}.")
   else:
@@ -148,7 +148,6 @@ def run(input):
       "article_path": article_path,
       "prior_session_logs": prior_logs,
     },
-    "thin_foundation_warning": thin_foundation,
     "done": done,
     "done_reasons": done_reasons,
     "observations": observations,
