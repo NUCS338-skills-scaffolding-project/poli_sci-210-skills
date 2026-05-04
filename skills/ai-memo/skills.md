@@ -174,7 +174,9 @@ After each sub-skill closes (heuristic gate or narrative override) and the stude
 ### Step 8 — Finalize
 When `done = True`:
 1. Finalize the **Synthesis** section of the session log: concept, divergence list (drawn from eval-ai-response findings), memo angle (drawn from scaffold-writing), transcript path.
-2. Report to the student in one short message: brief recap, transcript path, session-log path, and the top 2–3 items from the synthesis. Then exit.
+2. Report to the student in one short message: brief recap, transcript path, session-log path, and the top 2–3 items from the synthesis.
+3. **Optional invocation — `session-reflect`:** Offer: "Want to take 30 seconds to reflect on what landed and what stayed murky before we close?" If accepted, invoke `session-reflect`. The AI memo chain crosses tutor↔AI mode boundaries, so the metacognitive value of naming what got clearer and what didn't is especially high here. Skip if the student has already disengaged.
+4. Exit.
 
 If the student abandons mid-chain, finalize the Synthesis with whatever's complete, note which skills ran and which didn't, mark whether the 5+ follow-up rubric was met (from `ai-explain`'s Completion Notes), and exit cleanly.
 

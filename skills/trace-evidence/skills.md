@@ -91,6 +91,8 @@ Open with: "Which finding does the paper most want you to believe? Pick one — 
 - If their reading matches the headline claim → Step 4.
 - If their reading reveals a mismatch (claim says X; table shows X conditional on Y, or only for a subgroup) → that's worth holding on to. Don't critique it, but acknowledge: "interesting — the claim and the evidence don't quite line up. Hold that for Phase 3." Log under Divergences.
 
+> **Optional invocation — `stat-intuition`:** If the student names a number but glosses over it ("the coefficient is 0.32 and significant" without engaging with what 0.32 means in the outcome's units), invoke `stat-intuition` before continuing. That skill pushes for the unit-translation move and hands back here. Don't invoke it if the student is already engaging with magnitude — only when they're skipping past the number.
+
 ### Step 4 — Reconcile and exit · *reconcile beat*
 Compare the student's claim/locus/reading to your pre-read. If they pointed to a different but defensible locus (e.g., they cited the figure where you cited the table — both legitimate), follow them. If the locus they cited doesn't actually contain the claim they named, push back once with "are you sure that's the table that supports *that* claim?"; if they correct, log Resolved; if they don't, log Open.
 

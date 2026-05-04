@@ -114,6 +114,8 @@ When phase 3 completes, finalize the Synthesis section: ranked critique kernel t
 
 Tell the student: "You have a critique kernel: <top item> + <2nd item>. Hand off to `scaffold-writing` when you're ready to write — it'll structure the sections without writing prose for you. It can read this session log as your content seed."
 
+> **Optional invocation — `session-reflect`:** Before ending, offer: "Want to take 30 seconds for a quick reflection before we close out the critique work?" If accepted, invoke `session-reflect` — the RDC chain spans three phases and 9 sub-skills, so a consolidating reflection is high-value here. The reflection log is forward-looking; it doesn't duplicate the critique kernel synthesis. Skip if the student has already disengaged.
+
 End this skill. **Do not invoke `scaffold-writing` from inside this orchestrator** — let the student cross that boundary themselves so the writing skill stays reusable for the AI memo and any other assignment.
 
 ## Completion Criteria

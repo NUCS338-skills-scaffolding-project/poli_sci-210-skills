@@ -148,7 +148,13 @@ If the in-flight subagent is still running when you need its output, wait. If wa
 - If `done=False`: open the next skill (Step 5).
 - If `done=True`: finalize the Synthesis section of the session log. Rank revision targets across all completed skills by leverage — biggest revision payoff first. Use both heuristic signals (which gates fired, which were overridden, which were skipped) and your own judgment of which findings most change the writing.
 
-Report to the student: brief recap of what ran, link to the session log, and the top 2–3 items from the synthesis. Then exit.
+> **Optional invocation — `play-reviewer` (draft mode only):** Before finalizing, offer the student an adversarial pass: "Want to do a final reviewer-mode pass on the draft before we close out? It surfaces the objections a reviewer would raise on the version you have now." If they accept, invoke `play-reviewer`; its scratchpad of reviewer comments becomes additional revision targets in the Synthesis. Skip in plan mode — there's no draft to review.
+
+Report to the student: brief recap of what ran, link to the session log, and the top 2–3 items from the synthesis.
+
+> **Optional invocation — `session-reflect`:** After the recap, offer: "Want to take 30 seconds for a quick session reflection before we close?" If accepted, invoke `session-reflect`. It writes a forward-looking reflection log under `students/<student>/session-logs/` that the student can re-read before next session. Skip if the student has already disengaged.
+
+Then exit.
 
 If the student abandons mid-chain (closes the conversation, says "stop"), finalize the Synthesis with whatever's complete, note which skills ran and which didn't, and exit cleanly.
 
