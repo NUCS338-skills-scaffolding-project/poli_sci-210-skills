@@ -2,7 +2,13 @@
 skill_id: "scaffold-written-assignment"
 name: "Scaffold Written Assignment"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["writing", "scaffolding"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "extract-requirements"
+  - "bound-scope"
+  - "structure-paragraphs"
 python_entry: "logic.py"
 ---
 

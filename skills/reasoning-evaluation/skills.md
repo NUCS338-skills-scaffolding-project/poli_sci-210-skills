@@ -2,7 +2,13 @@
 skill_id: "reasoning-evaluation"
 name: "Reasoning Evaluation"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["writing", "argumentation", "reasoning"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "evaluate-reasoning"
+  - "surface-assumptions"
+  - "engage-objections"
 python_entry: "logic.py"
 ---
 

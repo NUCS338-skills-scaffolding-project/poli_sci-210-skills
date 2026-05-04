@@ -2,7 +2,14 @@
 skill_id: "analyze-writing"
 name: "Analyze Writing"
 skill_type: "instructional"
+stance: "meta"
 tags: ["writing", "orchestrator", "meta"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "construct-arguments"
+  - "ensure-cohesion"
+  - "place-evidence"
+  - "evaluate-reasoning"
 python_entry: "logic.py"
 ---
 

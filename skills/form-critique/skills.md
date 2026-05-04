@@ -2,7 +2,13 @@
 skill_id: "form-critique"
 name: "Form Critique"
 skill_type: "instructional"
+stance: "meta"
 tags: ["research-design", "methods", "critique", "orchestrator", "phase"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "construct-arguments"
+  - "evaluate-reasoning"
+  - "place-evidence"
 python_entry: "logic.py"
 ---
 

@@ -2,7 +2,13 @@
 skill_id: "inference-threat-spotting"
 name: "Inference Threat Spotting"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "critique", "threats"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "evaluate-reasoning"
+  - "surface-assumptions"
+  - "engage-objections"
 python_entry: "logic.py"
 ---
 

@@ -2,7 +2,13 @@
 skill_id: "critique-research-design"
 name: "Critique Research Design"
 skill_type: "instructional"
+stance: "meta"
 tags: ["research-design", "methods", "critique", "orchestrator", "meta"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "evaluate-reasoning"
+  - "surface-assumptions"
+  - "engage-objections"
 python_entry: "logic.py"
 ---
 

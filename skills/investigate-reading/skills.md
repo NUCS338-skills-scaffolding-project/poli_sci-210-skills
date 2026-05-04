@@ -2,7 +2,13 @@
 skill_id: "investigate-reading"
 name: "Investigate Reading"
 skill_type: "instructional"
+stance: "meta"
 tags: ["research-design", "methods", "reading", "orchestrator", "phase"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "identify-evidence"
+  - "interpret-evidence"
+  - "restate-the-problem"
 python_entry: "logic.py"
 ---
 

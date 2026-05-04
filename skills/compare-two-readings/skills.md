@@ -2,7 +2,12 @@
 skill_id: "compare-two-readings"
 name: "Compare Two Readings"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["reading", "synthesis"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "interpret-evidence"
+  - "evaluate-reasoning"
 python_entry: "logic.py"
 ---
 

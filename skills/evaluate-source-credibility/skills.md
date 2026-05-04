@@ -2,7 +2,12 @@
 skill_id: "evaluate-source-credibility"
 name: "Evaluate Source Credibility"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research", "critique"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "verify-claims"
+  - "surface-assumptions"
 python_entry: "logic.py"
 ---
 

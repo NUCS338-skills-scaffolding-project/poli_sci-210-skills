@@ -2,7 +2,12 @@
 skill_id: "connect-concept-to-example"
 name: "Connect Concept to Example"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["concepts", "application"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "verify-claims"
+  - "surface-assumptions"
 python_entry: "logic.py"
 ---
 

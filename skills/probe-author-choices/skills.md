@@ -2,7 +2,13 @@
 skill_id: "probe-author-choices"
 name: "Probe Author Choices"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "reading", "investigation"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "surface-assumptions"
+  - "evaluate-reasoning"
+  - "interpret-evidence"
 python_entry: "logic.py"
 ---
 

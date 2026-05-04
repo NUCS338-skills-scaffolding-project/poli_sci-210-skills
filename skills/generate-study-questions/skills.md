@@ -2,7 +2,13 @@
 skill_id: "generate-study-questions"
 name: "Generate Study Questions"
 skill_type: "instructional"
+stance: "hint"
 tags: ["quiz-prep", "practice"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "reflect-on-progress"
+  - "manage-effort"
+  - "request-targeted-help"
 python_entry: "logic.py"
 ---
 

@@ -2,18 +2,6 @@ course_id: "POLISCI-210"
 course_name: "Introduction to Empirical Methods in Political Science"
 course_type: "humanities"
 spoc_contact: "bryanmurray2026@u.northwestern.edu"
-skills_used:
-  - tie-reading-to-course
-  - reading-comprehension-check
-  - explain-back-check
-  - argument-decomposition
-  - compare-two-readings
-  - generate-study-questions
-  - reflect-on-ai-response
-  - scaffold-written-assignment
-  - evaluate-source-credibility
-  - connect-concept-to-example
-  - logical-flow-testing
-  - evidence-placement-review
-  - cohesion-strengthening
-  - reasoning-evaluation
+# skills_used: skills adopted from OTHER teams' repos.
+# Skills authored in this repo (under /skills/) are picked up automatically.
+skills_used: []

@@ -2,7 +2,13 @@
 skill_id: "operationalization-check"
 name: "Operationalization Check"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "measurement"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "verify-claims"
+  - "surface-assumptions"
+  - "evaluate-reasoning"
 python_entry: "logic.py"
 ---
 

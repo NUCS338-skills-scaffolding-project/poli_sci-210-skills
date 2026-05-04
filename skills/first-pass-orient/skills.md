@@ -2,7 +2,12 @@
 skill_id: "first-pass-orient"
 name: "First-Pass Orient"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "reading", "investigation"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "restate-the-problem"
+  - "identify-evidence"
 python_entry: "logic.py"
 ---
 

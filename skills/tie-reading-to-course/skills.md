@@ -2,7 +2,12 @@
 skill_id: "tie-reading-to-course"
 name: "Tie Reading to Course"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["reading", "synthesis", "metacognition"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "reflect-on-progress"
+  - "restate-the-problem"
 python_entry: "logic.py"
 ---
 

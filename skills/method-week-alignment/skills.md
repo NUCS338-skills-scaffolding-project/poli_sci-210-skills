@@ -2,7 +2,12 @@
 skill_id: "method-week-alignment"
 name: "Method-Week Alignment"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "course-alignment"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "reflect-on-progress"
+  - "restate-the-problem"
 python_entry: "logic.py"
 ---
 

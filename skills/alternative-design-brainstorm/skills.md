@@ -2,7 +2,13 @@
 skill_id: "alternative-design-brainstorm"
 name: "Alternative Design Brainstorm"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "critique", "alternatives"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "surface-assumptions"
+  - "engage-objections"
+  - "construct-arguments"
 python_entry: "logic.py"
 ---
 

@@ -2,7 +2,11 @@
 skill_id: "skill-name"
 name: "Human Readable Name"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["topic1", "topic2"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "restate-the-problem"
 python_entry: "logic.py"
 ---
 

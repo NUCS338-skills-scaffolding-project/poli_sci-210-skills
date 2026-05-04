@@ -2,7 +2,13 @@
 skill_id: "scope-conditions-check"
 name: "Scope Conditions Check"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "critique", "scope", "external-validity"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "detect-ambiguity"
+  - "surface-assumptions"
+  - "evaluate-reasoning"
 python_entry: "logic.py"
 ---
 

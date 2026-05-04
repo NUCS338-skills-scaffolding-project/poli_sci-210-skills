@@ -2,7 +2,12 @@
 skill_id: "logical-flow-testing"
 name: "Logical Flow Testing"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["writing", "argumentation", "structure"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "evaluate-reasoning"
+  - "structure-paragraphs"
 python_entry: "logic.py"
 ---
 

@@ -2,7 +2,12 @@
 skill_id: "design-skeleton"
 name: "Design Skeleton"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "methods", "design-map"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "decompose-arguments"
+  - "identify-evidence"
 python_entry: "logic.py"
 ---
 

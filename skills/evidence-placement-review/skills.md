@@ -2,7 +2,12 @@
 skill_id: "evidence-placement-review"
 name: "Evidence Placement Review"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["writing", "evidence", "structure"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "place-evidence"
+  - "structure-paragraphs"
 python_entry: "logic.py"
 ---
 

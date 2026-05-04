@@ -2,7 +2,13 @@
 skill_id: "extract-research-design"
 name: "Extract Research Design"
 skill_type: "instructional"
+stance: "meta"
 tags: ["research-design", "methods", "design-map", "orchestrator", "phase"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "decompose-arguments"
+  - "identify-evidence"
+  - "interpret-evidence"
 python_entry: "logic.py"
 ---
 

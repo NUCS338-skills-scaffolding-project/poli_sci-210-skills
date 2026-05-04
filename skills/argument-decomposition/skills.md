@@ -2,7 +2,12 @@
 skill_id: "argument-decomposition"
 name: "Argument Decomposition"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["reading", "argumentation", "analysis"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "decompose-arguments"
+  - "identify-evidence"
 python_entry: "logic.py"
 ---
 

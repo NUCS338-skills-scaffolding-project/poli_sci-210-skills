@@ -2,7 +2,13 @@
 skill_id: "reading-comprehension-check"
 name: "Reading Comprehension Check"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["reading", "comprehension"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "identify-evidence"
+  - "interpret-evidence"
+  - "restate-the-problem"
 python_entry: "logic.py"
 ---
 

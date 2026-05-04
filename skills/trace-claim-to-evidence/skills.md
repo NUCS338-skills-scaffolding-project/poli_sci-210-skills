@@ -2,7 +2,13 @@
 skill_id: "trace-claim-to-evidence"
 name: "Trace Claim to Evidence"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["research-design", "reading", "investigation"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "identify-evidence"
+  - "interpret-evidence"
+  - "verify-claims"
 python_entry: "logic.py"
 ---
 

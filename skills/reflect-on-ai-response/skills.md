@@ -2,7 +2,13 @@
 skill_id: "reflect-on-ai-response"
 name: "Reflect on AI Response"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["ai-literacy", "critique"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "verify-claims"
+  - "surface-assumptions"
+  - "reflect-on-progress"
 python_entry: "logic.py"
 ---
 

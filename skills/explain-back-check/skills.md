@@ -2,7 +2,13 @@
 skill_id: "explain-back-check"
 name: "Explain-Back Check"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["concepts", "metacognition"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "restate-the-problem"
+  - "surface-assumptions"
+  - "reflect-on-progress"
 python_entry: "logic.py"
 ---
 

@@ -2,7 +2,12 @@
 skill_id: "cohesion-strengthening"
 name: "Cohesion Strengthening"
 skill_type: "instructional"
+stance: "socratic"
 tags: ["writing", "transitions", "cohesion"]
+course_types: ["humanities"]
+learning_goal_tags:
+  - "ensure-cohesion"
+  - "structure-paragraphs"
 python_entry: "logic.py"
 ---
 
