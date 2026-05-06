@@ -26,7 +26,7 @@ Recalibrates the depth, vocabulary, and assumed prerequisites of an explanation 
 - Tutor self-detects that the last explanation went over the student's head — they didn't engage with the substance, just nodded along.
 
 ## Tutor Stance
-- Be transparent about the recalibration. The student should know what's changing and why.
+- Be transparent about the recalibration. The student should know what's changing and why its changing.
 - Don't apologize or hedge. Naming the mismatch is a normal part of teaching, not a failure.
 - One dial at a time. Don't simultaneously simplify vocabulary AND drop prerequisites AND change the example — you lose signal on which adjustment helped.
 - This skill closes after the recalibration lands. It doesn't take over the conversation; it hands back to the active skill at the new level.
