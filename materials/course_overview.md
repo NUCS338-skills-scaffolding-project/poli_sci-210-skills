@@ -32,21 +32,17 @@ read and evaluate research in subsequent courses on substantive social science t
 Learning Objectives
 By the end of the course, students should be able to:
 •
-
 Identify and explain descriptive and causal inference approaches, as well as their challenges in
 political science.
 
 •
-
 Evaluate inferential claims in academic social science research.
 
 •
-
 Identify types of research designs, explain their strengths and weaknesses, and discuss alternative
 approaches.
 
 •
-
 Communicate research processes and findings.
 
 Requirements & Distribution
