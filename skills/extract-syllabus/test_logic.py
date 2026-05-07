@@ -48,3 +48,16 @@ def test_invalid_top_level_json_raises():
 def test_top_level_array_raises():
     with pytest.raises(ParseError):
         parse_extraction("[]")
+
+
+def test_strips_unknown_assignment_types():
+    raw = json.dumps({
+        "course": {"code": "", "name": "", "instructor": "", "term": ""},
+        "assignments": [
+            {"name": "Midterm", "type": "midterm", "due": "Wk5", "prompt": "p"},
+        ],
+        "warnings": [],
+    })
+    result = parse_extraction(raw)
+    assert result["assignments"][0]["type"] == "homework"
+    assert any("unknown type" in w for w in result["warnings"])
