@@ -28,3 +28,13 @@ def test_parses_well_formed_response():
     result = parse_extraction(raw)
 
     assert result == expected
+
+
+def test_drops_malformed_rows_and_records_warnings():
+    raw = _read_fixture("malformed_rows.json")
+    result = parse_extraction(raw)
+
+    names = [a["name"] for a in result["assignments"]]
+    assert names == ["Good 1", "Good 2"]
+    assert len(result["warnings"]) == 2
+    assert all("missing name" in w for w in result["warnings"])

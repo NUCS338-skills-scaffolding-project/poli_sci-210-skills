@@ -1,0 +1,10 @@
+{
+  "course": {"code": "X 100", "name": "", "instructor": "", "term": ""},
+  "assignments": [
+    {"name": "Good 1", "type": "writing", "due": "Wk1", "prompt": "p1"},
+    {"type": "writing", "due": "Wk2", "prompt": "no name"},
+    {"name": "Good 2", "type": "code", "due": "Wk3", "prompt": "p3"},
+    {"name": "", "type": "writing", "due": "Wk4", "prompt": "blank name"}
+  ],
+  "warnings": []
+}
