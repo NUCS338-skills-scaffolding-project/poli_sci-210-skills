@@ -38,3 +38,13 @@ def test_drops_malformed_rows_and_records_warnings():
     assert names == ["Good 1", "Good 2"]
     assert len(result["warnings"]) == 2
     assert all("missing name" in w for w in result["warnings"])
+
+
+def test_invalid_top_level_json_raises():
+    with pytest.raises(ParseError):
+        parse_extraction("not actually json {{{")
+
+
+def test_top_level_array_raises():
+    with pytest.raises(ParseError):
+        parse_extraction("[]")
