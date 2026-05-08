@@ -18,9 +18,28 @@ class ParseError(Exception):
     """Raised when the LLM output isn't valid JSON or lacks the top-level shape."""
 
 
+def _strip_code_fences(s: str) -> str:
+    """Remove surrounding ```json … ``` or ``` … ``` markdown fences.
+
+    LLMs frequently wrap JSON in fences despite "JSON only" instructions.
+    Strips at most one outer fenced block; bare JSON passes through unchanged.
+    """
+    s = s.strip()
+    if not s.startswith("```"):
+        return s
+    nl = s.find("\n")
+    if nl == -1:
+        return s
+    body = s[nl + 1:]
+    if body.endswith("```"):
+        body = body[:-3]
+    return body.strip()
+
+
 def parse_extraction(llm_output: str) -> dict[str, Any]:
+    cleaned = _strip_code_fences(llm_output)
     try:
-        data = json.loads(llm_output)
+        data = json.loads(cleaned)
     except json.JSONDecodeError as exc:
         raise ParseError(f"LLM output is not valid JSON: {exc}") from exc
 

@@ -50,6 +50,21 @@ def test_top_level_array_raises():
         parse_extraction("[]")
 
 
+def test_strips_markdown_code_fences():
+    payload = json.dumps({
+        "course": {"code": "X", "name": "", "instructor": "", "term": ""},
+        "assignments": [{"name": "A", "type": "writing", "due": "", "prompt": ""}],
+        "warnings": [],
+    })
+    fenced = f"```json\n{payload}\n```"
+    result = parse_extraction(fenced)
+    assert result["course"]["code"] == "X"
+    assert result["assignments"][0]["name"] == "A"
+
+    bare = f"```\n{payload}\n```"
+    assert parse_extraction(bare)["assignments"][0]["name"] == "A"
+
+
 def test_strips_unknown_assignment_types():
     raw = json.dumps({
         "course": {"code": "", "name": "", "instructor": "", "term": ""},
