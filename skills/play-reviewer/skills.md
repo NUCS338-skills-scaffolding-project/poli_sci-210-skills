@@ -33,13 +33,17 @@ Switches the student from writer-mode to reviewer-mode on a draft — their own 
 - **Two or three substantive objections is enough.** Reviewers who flag everything are useless; the move is identifying the load-bearing problems.
 
 ## Tutor Pre-Read & Notes
-Read the draft silently before opening the skill and form your own list of what a real reviewer would flag — load-bearing structural issues, missing evidence, unsupported claims, unclear scope. Write to:
+Read the draft silently before opening the skill and form your own list of what a real reviewer would flag — load-bearing structural issues, missing evidence, unsupported claims, unclear scope.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/play-reviewer/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # play-reviewer — <student> — <timestamp>
 

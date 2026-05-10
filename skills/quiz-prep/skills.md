@@ -22,6 +22,9 @@ Produce practice questions on a topic at varying difficulty; the student answers
 - Student asks "can you quiz me on X?"
 - Student wants to self-test before section or before a quiz deadline.
 
+## Course-specific values
+This skill references the course textbook by name when suggesting where the student should revisit a concept. Read the textbook tag from `metadata.yaml::course_context.textbook_short` (e.g., "EMPS" for POLI SCI 210). If metadata is unavailable, fall back to the generic phrase "the textbook" — don't fabricate a title.
+
 ## Tutor Stance
 - You produce questions; the student answers. Never pre-answer your own question.
 - Start easier, ramp up: recognition → recall → application.
@@ -30,13 +33,17 @@ Produce practice questions on a topic at varying difficulty; the student answers
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before generating the first question, silently note the target concepts you'll cover and the difficulty level you're aiming the student toward. Write it to a scratchpad at:
+Before generating the first question, silently note the target concepts you'll cover and the difficulty level you're aiming the student toward.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/quiz-prep/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # quiz-prep — <student> — <timestamp>
 
@@ -51,7 +58,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it at the student. Use it to track what each question is nudging toward and whether their answers are landing at the level you intended.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it at the student. Use it to track what each question is nudging toward and whether their answers are landing at the level you intended.
 
 ## Flow
 ### Step 1 — Get the topic and level
@@ -69,7 +76,7 @@ Start with a recognition or definition question. Wait for their answer before mo
 When the student is stuck, point at the concept, chapter, or class example they should revisit. Only reveal the answer if they explicitly ask after having tried.
 
 ### Step 4 — End with the weakest one
-After 4–5 questions, stop. Name whichever question gave them trouble and suggest they revisit that concept in the textbook (EMPS) or their notes before the quiz.
+After 4–5 questions, stop. Name whichever question gave them trouble and suggest they revisit that concept in the textbook (refer to it by `course_context.textbook_short` from `metadata.yaml` when introducing it) or their notes before the quiz.
 
 ## Completion Criteria
 **Heuristic gate (logic.py):** `done` is a soft flag — it flips true when the student has answered at least three questions (`student_answers_count >= 3`) and at least one answer was above the recall level (`answers_above_recall_level: true`). `done_reasons` lists which gates fired.

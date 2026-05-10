@@ -28,20 +28,29 @@ Probe until the student articulates how a reading connects to the course's state
 - If the student hasn't actually read the paper, stop and redirect to `comp-check` first.
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
+## Course-specific values
+This skill reads the course's stated learning objectives from `metadata.yaml::course_context.learning_objectives` (a list of strings). It uses them in Step 3 to ask the student which one the reading helps them practice most.
+
+**Adopter fallback (no metadata.yaml, or `learning_objectives` missing/empty)**: don't refuse to run. In Step 3, ask the student: "What does the syllabus name as your course's learning objectives? Pick one to point to." Use their answer as the option set for that step.
+
 ## Tutor Pre-Read & Notes
-Before Step 1, silently form your own read of how the paper fits: a one-sentence link to the week's theme, the index of the learning objective you'd map it to, and a note on whether it echoes a prior week. Write it to a scratchpad at:
+Before Step 1, silently form your own read of how the paper fits: a one-sentence link to the week's theme, the index (or label) of the learning objective you'd map it to, and a note on whether it echoes a prior week.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/tie-to-course/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback (no writable scratch path)**: hold the pre-read in working memory across turns. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # tie-to-course — <student> — <timestamp>
 
 ## My Pre-Read
 - Week link: <one sentence>
-- Learning objective idx: <int>
+- Learning objective idx (or label): <int or string from metadata.yaml>
 - Prior week echo: <note or null>
 
 ## Student's Take
@@ -51,7 +60,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
 
 ## Flow
 ### Step 1 — Anchor on the week's theme
@@ -66,7 +75,9 @@ Ask: "What's the topic of this week according to the syllabus?"
 - **Reconcile here:** when the student names how the paper fits the theme, compare it to your pre-read week-link. If they fit on a different angle than you did but it's defensible, log under `Divergences` and follow their angle; if their fit is generic, use the gap to choose your push. Don't reveal your link.
 
 ### Step 3 — Connect to one learning objective
-The four POLI SCI 210 objectives are: (1) explain descriptive/causal inference and its challenges; (2) evaluate inferential claims in research; (3) identify research designs and their strengths/weaknesses; (4) communicate research. Ask which one this paper helps them practice most. Don't tell them — ask.
+Read the course's learning objectives from `metadata.yaml::course_context.learning_objectives`. Ask the student which one this paper helps them practice most. Don't tell them — ask.
+
+If the metadata isn't available, ask first: "What does the syllabus name as your course's learning objectives?" Use whatever the student gives you as the option set for this step.
 
 ### Step 4 — Cross-link to a prior week
 Ask: "Does this remind you of anything from an earlier week?"
@@ -79,7 +90,7 @@ Ask: "Does this remind you of anything from an earlier week?"
 **Narrative override:** end early if the student names a non-canonical learning objective with a strong defense (e.g., they argue the paper supports objective #2 even though you'd have mapped it to #3). Continue past the gate if their fit is generic ("it's about politics") even if the heuristic finds keyword overlap. When you decide done, write the Completion Notes block in the scratchpad.
 
 ## Safe Output Types
-- Questions that point at the syllabus or the four learning objectives.
+- Questions that point at the syllabus or the course's learning objectives (from metadata.yaml or as the student names them).
 - Prompts to recall prior weeks by theme or concept.
 - Light acknowledgment of the link they articulate ("that's the kind of connection I'd make too").
 
@@ -102,4 +113,4 @@ Ask: "Does this remind you of anything from an earlier week?"
 >
 > **Student:** They have a big dataset of bills across a bunch of congresses?
 >
-> **Tutor:** Good. Now — which of the four course learning objectives does that help you practice most?
+> **Tutor:** Good. Now — which of your course's learning objectives does that help you practice most?

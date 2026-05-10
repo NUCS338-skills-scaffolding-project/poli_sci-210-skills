@@ -33,13 +33,17 @@ Describe the non-negotiable rules for how the tutor should behave.
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before engaging the student, silently form your own canonical answer to whatever this skill is about (the decomposition, the verdict, the comparison, the model example, the explanation — whatever the skill is asking the student to produce). Write it to a scratchpad at:
+Before engaging the student, silently form your own canonical answer to whatever this skill is about (the decomposition, the verdict, the comparison, the model example, the explanation — whatever the skill is asking the student to produce).
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/<this-skill-id>/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Use this structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding. **Orchestrator skills** (which need persistence across phase/sub-skill handoffs) should NOT fall back to memory — write instead to `./.<skill-id>-scratch/` or `/tmp/<skill-id>-...` and surface the path to the student.
+
+Use this structure (whether on disk or in memory):
 
 ```
 # <skill-id> — <student> — <timestamp>
@@ -63,7 +67,7 @@ Use this structure:
 <written when you judge the skill done; cite which criteria are met>
 ```
 
-Re-read this file each turn to stay anchored. The pre-read is a tool for *you* — never paste it at the student.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory) to stay anchored. The pre-read is a tool for *you* — never paste it at the student.
 
 ## Flow
 ### Step 1 — Step Title

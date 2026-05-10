@@ -29,13 +29,17 @@ Granular skill in Phase 1 (`orient-paper`) of the research design critique. Forc
 - Be concise. One short paragraph or one question per turn. The skill is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently form your own one-sentence puzzle and one-sentence answer for THIS paper. Note what's load-bearing for the method (e.g., for `experiments`: the manipulation; for `surveys`: the population sampled and the question wording; for `small-n`: the case selection logic; for `theory-data`: the theoretical claim being tested vs. the empirical pattern). Write the scratchpad at:
+Before Step 1, silently form your own one-sentence puzzle and one-sentence answer for THIS paper. Note what's load-bearing for the method (e.g., for `experiments`: the manipulation; for `surveys`: the population sampled and the question wording; for `small-n`: the case selection logic; for `theory-data`: the theoretical claim being tested vs. the empirical pattern).
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/first-pass-orient/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # first-pass-orient — <student> — <timestamp>
 
@@ -63,7 +67,7 @@ Structure:
 - notes: <anything Phase 2 should know>
 ```
 
-Re-read this scratchpad each turn. Pre-read is for you — never paste it at the student. Divergences are scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it at the student. Divergences are scaffolding targets.
 
 ## Flow
 

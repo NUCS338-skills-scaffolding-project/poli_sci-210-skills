@@ -43,13 +43,15 @@ Method-aware focus areas:
 - `small-n`: what counts as evidence of a within-case mechanism; coding of the case as "outcome present/absent."
 - `machine-learning`: label definition (what's labeled as positive/negative), feature definition.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/op-check/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # op-check — <student> — <timestamp>
 
@@ -78,7 +80,7 @@ Structure:
 - notes: <anything Phase 3 should know — e.g., "primary load-bearing gap is the country-coded political institutions measure">
 ```
 
-Re-read each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

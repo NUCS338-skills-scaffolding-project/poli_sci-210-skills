@@ -31,11 +31,19 @@ python_entry: "logic.py"
 - **Track follow-ups by counting.** A follow-up is any student turn after the initial explanation that asks something further. The 5+ count is enforced by `logic.py`; you read its output each turn.
 
 ## Tutor Pre-Read & Notes
-Before sending the opening banner, silently load the relevant slide PDF (`materials/slides/weekN-slides.pdf`) for the concept's week. Form your own honest read of the concept as the slides frame it, plus the gaps a casual chatbot answer is likely to have vs. that framing. Write it to:
+Before sending the opening banner, silently load the relevant slide PDF and form your own honest read of the concept as the slides frame it, plus the gaps a casual chatbot answer is likely to have vs. that framing.
+
+**Default slide path** (resolved from `paths.slide_filename_pattern` in `metadata.yaml`, or `materials/slides/week{N}-slides.pdf` if no metadata is present).
+
+**Adopter fallback (no slide file available)**: if the slide PDF doesn't exist and you can't otherwise access it, ask the student to paste a few bullets, attach the file, or describe what was covered in lecture before opening rote-AI mode. Whatever they provide becomes your pre-read source. Don't refuse to run — but don't bluff a "slide-grounded" read you don't have either; note in the pre-read whether your framing is slide-grounded or student-reported, since the eval step depends on knowing which.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/ai-explain/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
+
+**Adopter fallback (no writable scratch path)**: hold the pre-read in working memory across turns; re-anchor on it before answering each follow-up.
 
 Structure:
 ```
@@ -68,11 +76,21 @@ ROTE AI MODE — tutor stance suspended for the duration of this skill.
 The pre-read is for *you* to know the gap between what you're saying and what the slides actually say — so the post-skill evaluation step has somewhere to land. **Do not paste the pre-read at the student.** They'll evaluate what you said live, not your private notes.
 
 ## Transcript Capture
-This skill writes a transcript artifact to:
+This skill writes a transcript artifact the student attaches to their submission.
+
+**Default path** (resolved from `paths.student_ai_memo_transcript_pattern` in `metadata.yaml`):
 
 ```
 students/<student>/ai-memos/week-<N>-<concept-slug>-transcript.md
 ```
+
+**Adopter fallback ladder** — pick the highest tier that works in your host:
+
+1. If `students/<student>/ai-memos/` exists or can be created and `<student>` is set → use the default.
+2. Else if cwd is writable → write to `./ai-memo-transcripts/week-<N>-<concept-slug>-transcript.md` (creating the directory if needed).
+3. Else → write to `/tmp/ai-memo-week-<N>-<concept-slug>-<YYYY-MM-DD-HHMM>-transcript.md` and surface the path to the student so they know where it landed.
+
+Surface the resolved transcript path in your opening banner (Step 1).
 
 Format:
 ```markdown

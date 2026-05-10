@@ -29,13 +29,17 @@ The student produces their own example of a concept; the tutor probes whether th
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently form your own model example for the concept and name which defining feature it demonstrates. Write it to a scratchpad at:
+Before Step 1, silently form your own model example for the concept and name which defining feature it demonstrates.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/concept-example/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # concept-example — <student> — <timestamp>
 
@@ -50,7 +54,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it as the right answer. Divergences become your scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it as the right answer. Divergences become your scaffolding targets.
 
 ## Flow
 ### Step 1 — Ask for one example · *reconcile beat*

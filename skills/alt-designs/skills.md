@@ -47,13 +47,15 @@ Before Step 1, read both prior phase logs and the prior in-phase scratchpads (`i
 
 Do NOT reveal your alternatives. The student's pedagogical move is *generating* the alternative — that's the muscle the assignment grades.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/alt-designs/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # alt-designs — <student> — <timestamp>
 
@@ -84,7 +86,7 @@ Structure:
 - notes: <which alternative is the strongest one to bring into the writing>
 ```
 
-Re-read each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

@@ -23,6 +23,11 @@ Top-level orchestrator for the POLI SCI 210 research design critique assignment.
 - Student supplies a published article path/PDF and asks for help critiquing it for class.
 - Student says "I need to critique this paper" without naming a specific skill.
 
+## Hard requirement: article PDF
+This chain hard-requires access to the article's full text — abstract-only or summary-only input won't work, because the Phase 1 `trace-evidence` skill needs the student to locate specific tables/figures inside the paper. The path passes through every leaf skill via the `article_path` input.
+
+If the student doesn't have the PDF (no `article_path`, no attachment, no pasted full text), end the skill cleanly and tell them to fetch the paper before re-opening the chain. Do NOT run a degraded chain on the abstract — the pedagogical move requires reading past the framing into the tables, and an abstract-only run silently produces a chain that *looks* complete but skips the move the assignment is grading.
+
 ## Tutor Stance
 - This skill produces no methodological judgments itself. It routes the student through phase sub-orchestrators, which route through granular skills.
 - One phase at a time, in order. Investigate before mapping; map before critiquing.
@@ -31,13 +36,22 @@ Top-level orchestrator for the POLI SCI 210 research design critique assignment.
 - Be concise at this layer. The phase orchestrators handle their internal pedagogy.
 
 ## Tutor Pre-Read & Notes
-The main orchestrator's "pre-read" is twofold: (1) resolve the week and method from the student's input, (2) confirm the article path. Write the orchestrator session log to:
+The main orchestrator's "pre-read" is twofold: (1) resolve the week and method from the student's input, (2) confirm the article path.
+
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/critique-design/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
 
-Structure:
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across phase/sub-skill handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes:
+
+1. `./.critique-design-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/critique-design-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your opening message.
+
+Structure (whether on disk or at the resolved fallback path):
 ```
 # critique-design — <student> — <timestamp>
 
@@ -70,7 +84,7 @@ Ranked critique kernel — moves the student now owns, biggest leverage first. T
 - pointer: <this session log path>
 ```
 
-Append per-phase blocks as each phase orchestrator completes; finalize the Synthesis at the end. Re-read this file each turn to stay anchored.
+Append per-phase blocks as each phase orchestrator completes; finalize the Synthesis at the end. Re-read the session log each turn (or re-anchor against the resolved fallback path) to stay anchored.
 
 ## Flow
 

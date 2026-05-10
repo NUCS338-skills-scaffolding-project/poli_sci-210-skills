@@ -35,13 +35,20 @@ The phase orchestrator's pre-read is light: confirm the article is readable at t
 
 Do NOT read the article deeply or form your own critique kernel at this layer — that pollutes later phases. The substantive pre-reads happen at the granular-skill level via subagents.
 
-Write the phase session log to:
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/orient-paper/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
 
-Structure:
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across phase/sub-skill handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes:
+
+1. `./.orient-paper-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/orient-paper-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your opening message.
+
+Structure (whether on disk or at the resolved fallback path):
 ```
 # orient-paper — <student> — <timestamp>
 
@@ -74,7 +81,7 @@ Phase 1 deliverable — the student's working grasp of the paper. Consumed by Ph
 - non-trivial choices: <2–3 design choices the authors made that have plausible alternatives>
 ```
 
-Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read this log each turn to stay anchored.
+Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read the session log each turn (or re-anchor against the resolved fallback path) to stay anchored.
 
 ## Flow
 

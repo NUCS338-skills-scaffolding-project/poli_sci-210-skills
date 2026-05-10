@@ -35,13 +35,23 @@ At the end of a working session, prompts the student to articulate what they act
 ## Tutor Pre-Read & Notes
 Before opening the skill, glance back over the conversation (or the session log files written by other orchestrators) to identify 2–3 candidate learning moments — things you noticed the student get unstuck on, sharpen, or recognize for the first time. Don't deliver this list at them; it's a diagnostic against which to judge whether their answers are landing on real learning vs. performing reflection.
 
-Write the reflection log to:
+Write the reflection log to a path the student can find again before the next session.
+
+**Default path** (resolved from `paths.student_session_log_pattern` in `metadata.yaml`):
 
 ```
 students/<student>/session-logs/<YYYY-MM-DD>-<short-topic>.md
 ```
 
-Note: the path is under `students/`, not `skills/.../scratch/`. The reflection log persists across sessions and is the student's, not a skill's internal scratchpad.
+**Adopter fallback ladder** — pick the highest tier that works in your host:
+
+1. If `students/<student>/session-logs/` exists or can be created and `<student>` is set → use the default.
+2. Else if cwd is writable → write to `./session-logs/<YYYY-MM-DD>-<short-topic>.md` (creating the directory if needed).
+3. Else if no project-relative directory is writable → write to `/tmp/session-reflect-<YYYY-MM-DD-HHMM>-<short-topic>.md` and tell the student that's where it landed.
+
+Whichever tier you use, surface the actual path to the student in the closing message — the log is the deliverable, not a hidden artifact.
+
+Note: the path is under `students/` (or its fallback) rather than `skills/.../scratch/`. The reflection log persists across sessions and is the student's, not a skill's internal scratchpad.
 
 Structure:
 ```
@@ -91,7 +101,7 @@ Ask: "What would you do differently next time you're working on something like t
 - "I'd start the RDC by mapping the design before forming the critique."
 
 ### Step 5 — Write the log + close
-Write the reflection log to `students/<student>/session-logs/<date>-<topic>.md`. Show the student the path:
+Write the reflection log to the path you resolved per the **Tutor Pre-Read & Notes** ladder (default: `students/<student>/session-logs/<date>-<topic>.md`; cwd or `/tmp/` fallback if the default isn't available). Show the student the actual path:
 
 > "Reflection saved at `<path>`. Re-read it before next session to pick up where you left off."
 
@@ -125,4 +135,4 @@ Close. Don't summarize the session beyond what's already in the log.
 >
 > **Student:** Probably ask about CIs at the start of a stats reading instead of bluffing past them.
 >
-> **Tutor:** Reflection saved at `students/bryan/session-logs/2026-05-04-rdc-week-9.md`. Re-read it before next session.
+> **Tutor:** Reflection saved at `students/<student>/session-logs/2026-05-04-rdc-week-9.md`. Re-read it before next session.

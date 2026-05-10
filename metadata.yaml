@@ -5,3 +5,47 @@ spoc_contact: "bryanmurray2026@u.northwestern.edu"
 # skills_used: skills adopted from OTHER teams' repos.
 # Skills authored in this repo (under /skills/) are picked up automatically.
 skills_used: []
+
+# ---------------------------------------------------------------------------
+# course_context — values that course-specific skills reference at runtime so
+# the skills.md files can stay course-agnostic. Adopting teams customize this
+# block. Skills fall back gracefully when a key is missing or empty.
+# ---------------------------------------------------------------------------
+course_context:
+  # Short tag the tutor uses when referring to "the textbook" mid-conversation.
+  # Read by: quiz-prep, eval-ai-response, comp-check.
+  textbook_short: "EMPS"
+  textbook_full: "Empirical Methods in Political Science"
+
+  # Course's stated learning objectives. Read by: tie-to-course.
+  # An adopting team replaces this list with its own. If the list is empty
+  # or missing, tie-to-course falls back to asking the student to name
+  # their course's objectives from the syllabus.
+  learning_objectives:
+    - "Explain descriptive vs. causal inference and its challenges"
+    - "Evaluate inferential claims in research"
+    - "Identify research designs and their strengths/weaknesses"
+    - "Communicate research findings clearly"
+
+  # Weeks the course is in session (skips week 1 / reading periods).
+  # Read by: pick-week-concept (week-validity gate).
+  weeks_in_session: [2, 3, 4, 5, 6, 7, 8, 9]
+
+# ---------------------------------------------------------------------------
+# paths — filesystem conventions for course materials and per-student outputs.
+# All paths are relative to the repo root. Skills fall back to host-runtime
+# defaults (working memory, /tmp, or the host's working directory) when a
+# referenced path is missing or unwritable.
+# ---------------------------------------------------------------------------
+paths:
+  materials_root: "materials"
+  slide_filename_pattern: "materials/slides/week{N}-slides.pdf"
+  students_root: "students"
+  student_session_log_pattern: "students/{student}/session-logs/{date}-{topic}.md"
+  student_ai_memo_transcript_pattern: "students/{student}/ai-memos/week-{N}-{slug}-transcript.md"
+  student_submissions_root: "students/{student}/submissions"
+  scratch_pattern: "skills/{skill_id}/scratch/{timestamp}-{student}-notes.md"
+
+# Default student name used when no <student> token is set explicitly.
+# Set to null to require an explicit student each session.
+default_student: null

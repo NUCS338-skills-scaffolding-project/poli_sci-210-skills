@@ -32,13 +32,22 @@ Orchestrator skill that takes a writing artifact, auto-classifies it as **plan m
 - Be concise at the orchestrator layer. The sub-skills handle the teaching; you handle the routing.
 
 ## Tutor Pre-Read & Notes
-The orchestrator's "pre-read" is the mode classification plus a high-level read of the artifact's shape (length, paragraph structure, presence/absence of a thesis, headings, footnotes). Write the orchestrator session log to:
+The orchestrator's "pre-read" is the mode classification plus a high-level read of the artifact's shape (length, paragraph structure, presence/absence of a thesis, headings, footnotes).
+
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/analyze-writing/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
 
-Structure:
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across phase/sub-skill handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes:
+
+1. `./.analyze-writing-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/analyze-writing-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your opening message.
+
+Structure (whether on disk or at the resolved fallback path):
 ```
 # analyze-writing — <student> — <timestamp>
 
@@ -180,7 +189,7 @@ If the student abandons mid-chain (closes the conversation, says "stop"), finali
 - Continuing past the completion criteria once the chain is done.
 
 ## Example Exchange
-> **Student:** Can you analyze my paper at `students/bryan/submissions/Foreign Policy Research Paper.pdf`?
+> **Student:** Can you analyze my paper at `students/<student>/submissions/Foreign Policy Research Paper.pdf`?
 >
 > **Tutor:** Reading it now. *(reads, classifies)* This looks like a draft — about 900 words of prose with three sections and a working thesis. I'd run the draft-mode chain: decompose-arg → flow-check → evidence-placement → reasoning-check → cohesion-check, one at a time. Want me to start there, or are you only at the planning stage?
 >

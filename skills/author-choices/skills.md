@@ -41,13 +41,15 @@ Before Step 1, silently identify 3–4 contestable design choices in the paper. 
 - `small-n`: case selection logic, level of analysis, what counts as a within-case observation, comparison cases (or absence thereof).
 - `machine-learning`: training data, label definition, evaluation metric, train/test split logic, baseline comparison.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/author-choices/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # author-choices — <student> — <timestamp>
 
@@ -76,7 +78,7 @@ Structure:
 - notes: <anything Phase 2 should know — e.g., "student flagged sample period as the deepest choice; worth foregrounding in design map">
 ```
 
-Re-read this scratchpad each turn. Pre-read is for you — never paste it at the student.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it at the student.
 
 ## Flow
 

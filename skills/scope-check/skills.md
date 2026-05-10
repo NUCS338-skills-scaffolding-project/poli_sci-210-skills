@@ -52,13 +52,15 @@ Method-aware emphasis (use as nudge categories):
 ## Tutor Pre-Read & Notes
 Before Step 1, read the paper's discussion / scope / external-validity section so you know what the paper claims about generalization and what it concedes. Read both prior phase logs. For each of the five scope categories, silently note: where could this claim plausibly fail to extend? Is the paper itself silent on it?
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/scope-check/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # scope-check — <student> — <timestamp>
 
@@ -85,7 +87,7 @@ Structure:
 - notes: <which scope condition is most load-bearing>
 ```
 
-Re-read each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

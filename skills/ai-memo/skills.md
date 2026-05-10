@@ -45,11 +45,20 @@ The chain crosses two mode boundaries. The orchestrator must surface each one wi
 The exact wording can vary, but the banner must (a) name the mode being entered, (b) describe what changes about Claude's behavior, and (c) reference the transcript and/or scratchpads the student can refer to.
 
 ## Tutor Pre-Read & Notes
-The orchestrator's "pre-read" is the student's chosen `{week, concept}` (which doesn't exist yet at Step 1) plus a high-level read of how the assignment maps to the chain. Write the orchestrator session log to:
+The orchestrator's "pre-read" is the student's chosen `{week, concept}` (which doesn't exist yet at Step 1) plus a high-level read of how the assignment maps to the chain.
+
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/ai-memo/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
+
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across mode-switches (tutor↔AI) and across subagent handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes (in order of preference):
+
+1. `./.ai-memo-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/ai-memo-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your Step 1 message so they know where the session log lives. Use the same resolved location for sub-skill pre-reads when their default paths are also unavailable.
 
 Structure:
 ```
@@ -126,8 +135,8 @@ Inputs:
 - Week: <N>
 - Concept: <phrase>
 - Initial AI prompt: <one-sentence framing>
-- Slide deck: /Users/bryanmurray/poli_sci-210-skills/materials/slides/week<N>-slides.pdf
-- Skill spec (read this first): /Users/bryanmurray/poli_sci-210-skills/skills/<NEXT_SKILL_ID>/skills.md
+- Slide deck: <ABSOLUTE_PATH_TO_SLIDE_PDF — resolve from `paths.slide_filename_pattern` in metadata.yaml, substituting {N}; or pass "not available, ask the student to paste/describe" if no slide file exists>
+- Skill spec (read this first): <ABSOLUTE_PATH_TO_NEXT_SKILL_SKILLS_MD — resolve relative to the orchestrator's working directory>
 - Prior sub-skill scratchpads for context (read these so your pre-read builds on what's already been surfaced — do not re-do their work):
   - <ABSOLUTE_PATH_TO_PRIOR_SCRATCHPAD_1>
   - ...
@@ -212,8 +221,8 @@ If the student abandons mid-chain, finalize the Synthesis with whatever's comple
 >
 > **Student:** Yes.
 >
-> **Tutor:** Switching to **rote AI mode**. From here I'll explain social desirability bias directly and answer your follow-ups the way a chatbot would — no Socratic redirects. The rubric needs at least five follow-ups; I'll track them. Everything is being captured to a transcript file at `students/bryan/ai-memos/week-5-social-desirability-bias-transcript.md`. The orchestrator will pull me back into tutor mode after we wrap.
+> **Tutor:** Switching to **rote AI mode**. From here I'll explain social desirability bias directly and answer your follow-ups the way a chatbot would — no Socratic redirects. The rubric needs at least five follow-ups; I'll track them. Everything is being captured to a transcript file at `students/<student>/ai-memos/week-5-social-desirability-bias-transcript.md`. The orchestrator will pull me back into tutor mode after we wrap.
 >
 > Social desirability bias is the tendency for survey respondents to misreport sensitive attitudes... *(continues with substantive explanation; student asks 5 follow-ups; transcript captures everything; logic.py returns done=True; student says "good, let's stop")*
 >
-> **Tutor:** Back to **tutor mode**. Transcript saved at `students/bryan/ai-memos/week-5-social-desirability-bias-transcript.md`. Now we evaluate what the AI just said against the course — that's the actual assignment. From here I'll be asking questions again, not giving answers. What concept did the AI just explain, and what did it claim in one sentence?
+> **Tutor:** Back to **tutor mode**. Transcript saved at `students/<student>/ai-memos/week-5-social-desirability-bias-transcript.md`. Now we evaluate what the AI just said against the course — that's the actual assignment. From here I'll be asking questions again, not giving answers. What concept did the AI just explain, and what did it claim in one sentence?

@@ -30,13 +30,17 @@ Ask targeted questions about a specific reading to surface gaps and deepen under
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently form your own three-layer read of the paper: a one-sentence "what," a one-sentence "why," and a one-sentence "so what." Write it to a scratchpad at:
+Before Step 1, silently form your own three-layer read of the paper: a one-sentence "what," a one-sentence "why," and a one-sentence "so what."
+
+**Default scratchpad path** (when this skill runs in a `poli_sci-210-skills`-style repo with a writable `skills/<id>/scratch/` directory and a known `<student>` token — the path resolves from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/comp-check/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding. The file write is an aid — the load-bearing thing is that you have a canonical pre-read to reconcile the student's answers against.
+
+Structure (whether on disk or in memory):
 ```
 # comp-check — <student> — <timestamp>
 
@@ -52,7 +56,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
 
 ## Flow
 ### Step 1 — Anchor with what they already know · *reconcile beat*

@@ -35,13 +35,20 @@ The phase orchestrator's pre-read is heavy. Read Phase 1 and Phase 2 session log
 
 Do NOT form your own critique kernel at this layer. Substantive pre-reads happen at the granular-skill level via subagents — they read the full log set and form their own canonical answers.
 
-Write the phase session log to:
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/form-critique/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
 
-Structure:
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across phase/sub-skill handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes:
+
+1. `./.form-critique-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/form-critique-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your opening message.
+
+Structure (whether on disk or at the resolved fallback path):
 ```
 # form-critique — <student> — <timestamp>
 
@@ -87,7 +94,7 @@ Phase 3 deliverable. Consumed directly by the main orchestrator and seeded into 
 A single sentence the student can carry into the writing: "If we were to conduct this study, the change that would matter most is X, because Y."
 ```
 
-Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read this log each turn to stay anchored.
+Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read the session log each turn (or re-anchor against the resolved fallback path) to stay anchored.
 
 ## Flow
 

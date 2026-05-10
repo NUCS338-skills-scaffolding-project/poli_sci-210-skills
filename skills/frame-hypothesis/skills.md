@@ -33,13 +33,17 @@ When the student has a research intuition but no testable hypothesis, presses th
 - One iteration cycle per turn. Don't sharpen direction, conditions, AND magnitude in one move — let each settle before pressing the next.
 
 ## Tutor Pre-Read & Notes
-Track hypothesis iterations across turns. Write a lightweight scratchpad at:
+Track hypothesis iterations across turns.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/frame-hypothesis/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the iteration history in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding. The file write is an aid — the load-bearing thing is that the iteration history stays visible so neither of you loses track of how the hypothesis evolved.
+
+Structure (whether on disk or in memory):
 ```
 # frame-hypothesis — <student> — <timestamp>
 
@@ -58,7 +62,7 @@ Structure:
 <the version that passes the falsifiability gate>
 ```
 
-The scratchpad keeps the iteration history visible so neither of you loses track of how the hypothesis evolved. Re-read it each turn.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory) so you don't lose track of how the hypothesis evolved.
 
 ## Flow
 

@@ -92,13 +92,15 @@ Before Step 1, read the article's discussion / limitations / robustness section 
 
 Method-aware focus is the catalog above — but Phase 2's operationalization vulnerabilities and "unaddressed method-week concerns" are usually where the strongest threats live. Foreground them.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/inference-threats/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # inference-threats — <student> — <timestamp>
 
@@ -127,7 +129,7 @@ Structure:
 - notes: <which threat is most load-bearing for the kernel>
 ```
 
-Re-read each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

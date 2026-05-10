@@ -233,6 +233,28 @@ for d in sorted(os.listdir('skills')):
 
 ---
 
+## Course-specific values & adopter fallbacks
+
+Skills in this repo were authored against a specific folder layout (`materials/slides/...`, `students/<student>/...`, `skills/<id>/scratch/...`) and a specific course (POLI SCI 210, with its textbook, weeks, and learning objectives). To keep them portable for other teams, course-specific values live in `metadata.yaml` under `course_context` and `paths`, and every skill that touches an external file or course-specific value documents an explicit fallback for adopters.
+
+### How a skill resolves a course-specific value
+
+1. Check `metadata.yaml` for the relevant key (e.g., `course_context.learning_objectives`, `paths.slide_filename_pattern`).
+2. If present and the referenced file exists, use it.
+3. If missing, unwritable, or the file does not exist, fall back per the skill's "Adopter fallback" paragraph — usually by asking the student for the value, holding state in working memory instead of on disk, or writing to a host-runtime scratch path (`/tmp` or cwd).
+
+### What an adopting team customizes
+
+When a team fetches a skill (or this whole repo) for a different course:
+
+- **`metadata.yaml` → `course_context`**: replace `textbook_short`, `learning_objectives`, `weeks_in_session` with the new course's values. Skills referencing these read the new values automatically.
+- **`metadata.yaml` → `paths`**: keep the defaults if you adopt the same folder layout, or override patterns to match your repo's structure.
+- **No skill `.md` edit is required for course swap.** The skill flows themselves stay agnostic; only the metadata changes.
+
+If a fetched skill is being used standalone (no `metadata.yaml`, no `materials/`, no `students/`), the in-skill fallbacks let it run without any of that infrastructure — the trade-off is that values normally read from metadata become questions the tutor asks the student.
+
+---
+
 ## Adopting skills from this repo
 
 Per Team-Guide §9: any team can fetch a skill by id:
@@ -240,6 +262,8 @@ Per Team-Guide §9: any team can fetch a skill by id:
 ```bash
 python scripts/fetch_skill.py --id <skill-id>
 ```
+
+> **Note:** `scripts/fetch_skill.py` is referenced by Team-Guide §9 but is not yet implemented in this repo. Until it ships, skills can be lifted by copying the relevant `skills/<skill-id>/` directory directly.
 
 The skills with the broadest cross-course applicability:
 

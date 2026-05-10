@@ -33,13 +33,20 @@ Phase 2 sub-orchestrator of `critique-design`. Walks the student through three g
 ## Tutor Pre-Read & Notes
 The phase orchestrator's pre-read is twofold: (1) read the Phase 1 session log so you know the student's puzzle, answer, headline claim, evidence locus, and the choices they already surfaced; (2) scan the article's methods section for shape only (length, subsection structure, presence of a formal model, presence of a measurement appendix). Do NOT form your own design map at this layer — substantive pre-reads happen at the granular-skill level via subagents.
 
-Write the phase session log to:
+**Default session-log path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/map-design/scratch/<YYYY-MM-DD-HHMM>-<student>-session.md
 ```
 
-Structure:
+**Adopter fallback (no writable conventional path)**: this orchestrator needs durable persistence across phase/sub-skill handoffs — unlike a leaf skill, you cannot hold this in memory alone. Write to whatever scratch location the host runtime exposes:
+
+1. `./.map-design-scratch/<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is writable.
+2. `/tmp/map-design-<YYYY-MM-DD-HHMM>-<student>-session.md` if cwd is not writable.
+
+Surface the resolved path to the student in your opening message.
+
+Structure (whether on disk or at the resolved fallback path):
 ```
 # map-design — <student> — <timestamp>
 
@@ -86,7 +93,7 @@ Phase 2 deliverable — the design map, measurement vulnerabilities, and method-
 - ...
 ```
 
-Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read this log each turn to stay anchored.
+Append per-skill blocks as each granular skill completes; finalize the Synthesis at the end. Re-read the session log each turn (or re-anchor against the resolved fallback path) to stay anchored.
 
 ## Flow
 

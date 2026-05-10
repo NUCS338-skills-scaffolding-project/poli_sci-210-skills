@@ -33,13 +33,15 @@ Granular skill in Phase 1 (`orient-paper`) of the research design critique. Forc
 ## Tutor Pre-Read & Notes
 Before Step 1, silently identify the paper's headline empirical claim, find which table/figure/section it lives in, and read what the evidence actually shows. Note any abstract/table mismatch. Method-aware: for `experiments` the locus is usually a treatment-effect table; `surveys` → cross-tabs or regression with descriptive support; `large-n` → coefficient plot or main regression table; `small-n` → process-tracing narrative section, often paragraph-length passages rather than a table; `machine-learning` → performance table, confusion matrix, or held-out evaluation; `theory-data` → the empirical-pattern figure or test case; `inference` → the comparison table that anchors the causal claim.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/trace-evidence/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # trace-evidence — <student> — <timestamp>
 
@@ -69,7 +71,7 @@ Structure:
 - notes: <anything Phase 2 should know — e.g., "student noticed Table 3 only supports the claim conditional on X">
 ```
 
-Re-read this scratchpad each turn. Pre-read is for you — never paste it at the student. Divergences and "suspicious gap" notes become scaffolding targets in Phase 3 — surface them in the Completion Notes for Phase 3's pre-read.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it at the student. Divergences and "suspicious gap" notes become scaffolding targets in Phase 3 — surface them in the Completion Notes for Phase 3's pre-read.
 
 ## Flow
 

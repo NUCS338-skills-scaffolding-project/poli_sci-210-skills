@@ -39,13 +39,15 @@ Before Step 1, silently fill in your own version of the seven fields for THIS pa
 - `small-n`: sample → "case selection logic"; identification → "process tracing / structured comparison"; comparison → "across cases" or "n/a — single case" with rationale.
 - `machine-learning`: IV/treatment → "input features / predictors"; DV/outcome → "label / target"; identification → "evaluation framework (train/test split, baselines)"; comparison → "baseline model(s) and the human/null counterfactual."
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/design-skeleton/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # design-skeleton — <student> — <timestamp>
 
@@ -82,7 +84,7 @@ Structure:
 - notes: <anything Phase 3 should know>
 ```
 
-Re-read this scratchpad each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

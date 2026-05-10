@@ -95,13 +95,15 @@ The student picks from the checklist matching the paper's `method` (passed in fr
 ## Tutor Pre-Read & Notes
 Before Step 1, pull up the checklist matching the paper's `method`, then for each item silently note: did the paper address it, partially address it, or leave it unaddressed? Tie each to a concrete paper element. Read the Phase 1 and Phase 2 outputs to know what the student already surfaced — operationalization concerns from `op-check` may already have an alignment item that matches, in which case foreground it.
 
-Write the scratchpad at:
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/method-align/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # method-align — <student> — <timestamp>
 
@@ -129,7 +131,7 @@ Structure:
 - notes: <anything Phase 3 should know — e.g., "the unaddressed compliance concern is the most load-bearing for the headline claim">
 ```
 
-Re-read each turn. Pre-read is for you — never paste it.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). Pre-read is for you — never paste it.
 
 ## Flow
 

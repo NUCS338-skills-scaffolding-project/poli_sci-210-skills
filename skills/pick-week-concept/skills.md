@@ -29,13 +29,25 @@ Help the student commit to one specific concept from a chosen week's lecture as 
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently load the slide PDF for the week the student names (`materials/slides/weekN-slides.pdf`) and form your own short list of the top concepts that deck centers — the things a student *should* be able to take away from that week. Write it to a scratchpad at:
+Before Step 1, silently load the slide PDF for the week the student names and form your own short list of the top concepts that deck centers — the things a student *should* be able to take away from that week.
+
+**Default slide path** (resolved from `paths.slide_filename_pattern` in `metadata.yaml`, or the canonical `materials/slides/week{N}-slides.pdf` if no metadata is present):
+
+```
+materials/slides/weekN-slides.pdf
+```
+
+**Adopter fallback (no slide file available)**: if the slide PDF doesn't exist at the expected path and you can't otherwise access it (no attachment, no paste from the student), do not refuse to run. Instead, ask the student: "I don't have your week N slides on hand — can you paste a few bullets from them, attach the file, or tell me what was covered in lecture that week?" Whatever they provide becomes your pre-read source. If they have nothing to share, end the skill and tell them they need at least a slide skim before this skill can land — that's already in the Tutor Stance.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/pick-week-concept/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback (no writable scratch path)**: hold the pre-read in working memory across turns. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # pick-week-concept — <student> — <timestamp>
 
@@ -55,13 +67,13 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste the survey at the student wholesale. Use it to recognize when their pick is on-deck vs. off-deck for that week, and to ask sharper narrowing questions.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste the survey at the student wholesale. Use it to recognize when their pick is on-deck vs. off-deck for that week, and to ask sharper narrowing questions.
 
 ## Flow
 
 ### Step 1 — Confirm the week
 Ask: "Which week are you doing the memo on?" Accept any week 2–9 (week 1 is no-class, week 10 is reading period).
-- If they name a valid week → load `materials/slides/weekN-slides.pdf`, do the pre-read, then Step 2.
+- If they name a valid week → load the slide PDF at the path resolved from `paths.slide_filename_pattern` (default `materials/slides/weekN-slides.pdf`), do the pre-read, then Step 2. If the file is missing, apply the **Adopter fallback (no slide file available)** from the Tutor Pre-Read section.
 - If they don't know which week → ask what they've been to recently or what's been on their mind from the course.
 
 ### Step 2 — Anchor on what they remember · *reconcile beat*

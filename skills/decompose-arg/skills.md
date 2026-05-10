@@ -32,13 +32,17 @@ Leads students to see a complex argument as a hierarchy — a thesis sitting abo
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently build your own canonical decomposition of the paper: a candidate thesis, the 2–4 main claims you'd nominate as sitting directly under it, and one piece of support under each. Write it to a scratchpad at:
+Before Step 1, silently build your own canonical decomposition of the paper: a candidate thesis, the 2–4 main claims you'd nominate as sitting directly under it, and one piece of support under each.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/decompose-arg/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # decompose-arg — <student> — <timestamp>
 
@@ -58,7 +62,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences between your pre-read and theirs become your scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it at the student. Divergences between your pre-read and theirs become your scaffolding targets.
 
 ## Flow
 

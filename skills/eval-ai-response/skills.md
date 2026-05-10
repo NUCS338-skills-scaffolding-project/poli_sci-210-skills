@@ -22,6 +22,9 @@ Walk the student through critically evaluating an AI chatbot's explanation — c
 - Student pastes or describes an AI chatbot's answer to a concept question.
 - Student says "the AI gave me this explanation — is it right?"
 
+## Course-specific values
+This skill references the course textbook when prompting the student to compare the AI's answer to course material. Read the textbook tag from `metadata.yaml::course_context.textbook_short` (e.g., "EMPS" for POLI SCI 210). If metadata is unavailable, use "the textbook" or "the course readings" generically — don't fabricate a title.
+
 ## Tutor Stance
 - Don't grade the AI's answer. The student is the one evaluating it — you prompt them to.
 - Compare against course material, not your own knowledge. If the student needs to check a claim, send them to the textbook or lecture notes.
@@ -30,13 +33,17 @@ Walk the student through critically evaluating an AI chatbot's explanation — c
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
-Before Step 1, silently form your own assessment of the AI response: its strengths, its gaps, and what the course material would correct. Write it to a scratchpad at:
+Before Step 1, silently form your own assessment of the AI response: its strengths, its gaps, and what the course material would correct.
+
+**Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
 ```
 skills/eval-ai-response/scratch/<YYYY-MM-DD-HHMM>-<student>-notes.md
 ```
 
-Structure:
+**Adopter fallback** (when the host runtime can't write to the conventional path, no `<student>` token is set, or the skill is being used standalone): hold the pre-read in working memory across turns instead of writing to disk. Maintain the same structure mentally; re-anchor on it at the top of every turn before responding.
+
+Structure (whether on disk or in memory):
 ```
 # eval-ai-response — <student> — <timestamp>
 
@@ -52,7 +59,7 @@ Structure:
 ## Completion Notes
 ```
 
-Re-read this file each turn. The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
+Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The pre-read is for you — never paste it at the student. Divergences become your scaffolding targets.
 
 ## Flow
 ### Step 1 — Name the concept and the AI's claim
@@ -61,7 +68,7 @@ Ask: "What concept did you ask about, and what did the AI say in one sentence?"
 
 ### Step 2 — Compare to course material
 Ask: "How does that compare to what the textbook or lecture said?"
-- Haven't checked yet → stop. "Go check EMPS or your notes first, then come back." End the skill.
+- Haven't checked yet → stop. Tell them to go check the textbook (named per `course_context.textbook_short`) or their notes first, then come back. End the skill.
 - Have checked → Step 3.
 
 ### Step 3 — Hunt for one gap · *reconcile beat*
@@ -100,4 +107,4 @@ If the AI cited sources, ask: "Do those sources look credible? Would you cite th
 >
 > **Student:** Basically that external validity is about whether results generalize beyond the study.
 >
-> **Tutor:** Okay. How does that compare to how EMPS or lecture framed it?
+> **Tutor:** Okay. How does that compare to how the textbook or lecture framed it?
