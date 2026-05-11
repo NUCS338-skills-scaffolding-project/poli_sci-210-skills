@@ -16,6 +16,8 @@ _ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 ALLOWED_TYPES = {"writing", "code", "quiz", "homework"}
+ALLOWED_RECURRENCE_KINDS = {"weekly"}
+ALLOWED_WEEKDAYS = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}
 
 
 class ParseError(Exception):
@@ -73,6 +75,50 @@ def _normalize_course(course: Any, warnings: list[str]) -> dict[str, str]:
     }
 
 
+def _normalize_recurrence(rec: Any, row_name: str, warnings: list[str]) -> dict | None:
+    """Return a clean recurrence dict, or None if absent/invalid.
+
+    Drops the whole object on any validation failure and appends a warning that
+    names the assignment row + which field was bad.
+    """
+    if rec is None:
+        return None
+    if not isinstance(rec, dict):
+        warnings.append(f"'{row_name}': recurrence is not an object, dropped.")
+        return None
+
+    kind = str(rec.get("kind") or "").strip().lower()
+    if kind not in ALLOWED_RECURRENCE_KINDS:
+        warnings.append(f"'{row_name}': unknown recurrence kind '{kind}', dropped.")
+        return None
+
+    count = rec.get("count")
+    if not isinstance(count, int) or count < 1 or count > 52:
+        warnings.append(f"'{row_name}': recurrence count must be 1..52, got {count!r}, dropped.")
+        return None
+
+    weekday = str(rec.get("anchor_weekday") or "").strip().title()
+    if weekday not in ALLOWED_WEEKDAYS:
+        warnings.append(f"'{row_name}': unknown anchor_weekday '{weekday}', dropped.")
+        return None
+
+    first_week = rec.get("first_week", 1)
+    if not isinstance(first_week, int) or first_week < 1:
+        first_week = 1
+
+    skip = rec.get("skip_weeks") or []
+    if not isinstance(skip, list) or not all(isinstance(w, int) for w in skip):
+        skip = []
+
+    return {
+        "kind": kind,
+        "count": count,
+        "anchor_weekday": weekday,
+        "first_week": first_week,
+        "skip_weeks": skip,
+    }
+
+
 def _normalize_assignments(rows: Any, warnings: list[str]) -> list[dict[str, Any]]:
     if not isinstance(rows, list):
         return []
@@ -91,10 +137,12 @@ def _normalize_assignments(rows: Any, warnings: list[str]) -> list[dict[str, Any
                 f"Row {i} ('{name}'): unknown type '{raw_type}', coerced to 'homework'."
             )
             raw_type = "homework"
+        recurrence = _normalize_recurrence(row.get("recurrence"), name, warnings)
         out.append({
             "name": name,
             "type": raw_type,
             "due": str(row.get("due") or ""),
             "prompt": str(row.get("prompt") or ""),
+            "recurrence": recurrence,
         })
     return out
