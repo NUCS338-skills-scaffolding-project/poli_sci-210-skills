@@ -3,20 +3,29 @@
     "code": "POLI SCI 210",
     "name": "Introduction to Empirical Methods in Political Science",
     "instructor": "Gustavo Diaz",
-    "term": "Spring 2026"
+    "term": "Spring 2026",
+    "term_start": "2026-04-02"
   },
   "assignments": [
     {
-      "name": "Research Design Critique 8",
+      "name": "Research Design Critique",
       "type": "writing",
-      "due": "Week 8",
-      "prompt": "Critique the design of Gilbert (2019)."
+      "due": "Fridays of each week",
+      "prompt": "Critique the design of an assigned reading.",
+      "recurrence": {
+        "kind": "weekly",
+        "count": 7,
+        "anchor_weekday": "Friday",
+        "first_week": 2,
+        "skip_weeks": []
+      }
     },
     {
       "name": "Final Paper",
       "type": "writing",
       "due": "Finals Week",
-      "prompt": "Write an empirical paper on a topic of your choice."
+      "prompt": "Write an empirical paper on a topic of your choice.",
+      "recurrence": null
     }
   ],
   "warnings": []

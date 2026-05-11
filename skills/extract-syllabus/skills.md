@@ -29,14 +29,16 @@ You are extracting structured data from a course syllabus. Read the syllabus tex
     "code": "<short code like 'POLI SCI 210' — empty string if missing>",
     "name": "<full course title — empty string if missing>",
     "instructor": "<primary instructor name — empty string if missing>",
-    "term": "<e.g. 'Spring 2026' — empty string if missing>"
+    "term": "<e.g. 'Spring 2026' — empty string if missing>",
+    "term_start": "<YYYY-MM-DD of the first day of Week 1 — empty string if missing>"
   },
   "assignments": [
     {
       "name": "<short assignment name>",
       "type": "<one of: writing, code, quiz, homework>",
       "due": "<verbatim due-date string from the syllabus>",
-      "prompt": "<1-2 sentence summary of what the student must do>"
+      "prompt": "<1-2 sentence summary of what the student must do>",
+      "recurrence": null
     }
   ],
   "warnings": ["<one sentence per ambiguity you couldn't resolve>"]
@@ -56,11 +58,30 @@ You are extracting structured data from a course syllabus. Read the syllabus tex
 
 3. **`prompt` is short.** 1–2 sentences. If the syllabus only gives a title with no description, write `""`.
 
-4. **All `course.*` fields are present.** If you cannot infer a field, return `""` (empty string), not `null`, not omitted.
+4. **All `course.*` fields are present.** If you cannot infer a field, return `""` (empty string), not `null`, not omitted. The `term_start` field is the date of the first day of Week 1; look for phrases like "Week 1 (April 2)" or "Classes begin Monday, April 2" in the schedule section. Format as `YYYY-MM-DD`. If you cannot find a Week-1 anchor, return `""`.
 
-5. **`warnings` is always present.** Empty array if everything was clear. Add one sentence per piece of ambiguity (e.g., `"Couldn't parse a date for 'Final paper' — left as TBD"`).
+5. **`recurrence` is per-row.**
+   - For one-off assignments (e.g., "Final Paper due May 12"): `"recurrence": null`.
+   - For series that recur weekly (e.g., "weekly quizzes", "research design critique each week × 7"): emit an object:
+     ```json
+     {
+       "kind": "weekly",
+       "count": <total occurrences, integer 1..52>,
+       "anchor_weekday": "<Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday>",
+       "first_week": <1-indexed week of the term the series starts, default 1>,
+       "skip_weeks": [<term-week numbers to skip, default []>]
+     }
+     ```
+   - For a series like *"Quizzes (10 points each × 7), due Fridays at 11:59 PM of the week they are assigned. Weekly assignments start the second week of class."*:
+     ```json
+     {"kind": "weekly", "count": 7, "anchor_weekday": "Friday", "first_week": 2, "skip_weeks": []}
+     ```
+   - Emit **one row per series**, not one row per occurrence. The orchestrator will expand it.
+   - The `name` for a recurring row is the singular form ("Quiz", not "Quizzes"). The `due` is the human description ("Fridays of each week"). The structured detail lives in `recurrence`.
 
-6. **No extra fields.** Do not add commentary, examples, or fields outside this schema.
+6. **`warnings` is always present.** Empty array if everything was clear. Add one sentence per piece of ambiguity (e.g., `"Couldn't parse a date for 'Final paper' — left as TBD"`).
+
+7. **No extra fields.** Do not add commentary, examples, or fields outside this schema.
 
 ### Syllabus
 
