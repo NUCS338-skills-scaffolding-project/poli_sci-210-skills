@@ -8,7 +8,11 @@ Validates and normalizes the JSON returned by the prompt in skills.md.
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
+
+
+_ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 ALLOWED_TYPES = {"writing", "code", "quiz", "homework"}
@@ -46,21 +50,26 @@ def parse_extraction(llm_output: str) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ParseError("LLM output must be a JSON object")
 
-    course = _normalize_course(data.get("course"))
     warnings: list[str] = list(data.get("warnings") or [])
+    course = _normalize_course(data.get("course"), warnings)
     assignments = _normalize_assignments(data.get("assignments"), warnings)
 
     return {"course": course, "assignments": assignments, "warnings": warnings}
 
 
-def _normalize_course(course: Any) -> dict[str, str]:
+def _normalize_course(course: Any, warnings: list[str]) -> dict[str, str]:
     if not isinstance(course, dict):
         course = {}
+    term_start = str(course.get("term_start") or "")
+    if term_start and not _ISO_DATE_RE.match(term_start):
+        warnings.append(f"Invalid term_start '{term_start}' — expected YYYY-MM-DD, cleared.")
+        term_start = ""
     return {
         "code": str(course.get("code") or ""),
         "name": str(course.get("name") or ""),
         "instructor": str(course.get("instructor") or ""),
         "term": str(course.get("term") or ""),
+        "term_start": term_start,
     }
 
 

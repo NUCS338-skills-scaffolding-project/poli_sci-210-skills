@@ -76,3 +76,22 @@ def test_strips_unknown_assignment_types():
     result = parse_extraction(raw)
     assert result["assignments"][0]["type"] == "homework"
     assert any("unknown type" in w for w in result["warnings"])
+
+
+def test_term_start_extracted_when_valid_iso():
+    raw = '{"course": {"code": "X", "name": "Y", "instructor": "", "term": "", "term_start": "2026-04-02"}, "assignments": [], "warnings": []}'
+    result = parse_extraction(raw)
+    assert result["course"]["term_start"] == "2026-04-02"
+
+
+def test_term_start_coerced_to_empty_when_missing():
+    raw = '{"course": {"code": "X", "name": "Y", "instructor": "", "term": ""}, "assignments": [], "warnings": []}'
+    result = parse_extraction(raw)
+    assert result["course"]["term_start"] == ""
+
+
+def test_term_start_coerced_to_empty_when_malformed():
+    raw = '{"course": {"code": "X", "name": "Y", "instructor": "", "term": "", "term_start": "April 2"}, "assignments": [], "warnings": []}'
+    result = parse_extraction(raw)
+    assert result["course"]["term_start"] == ""
+    assert any("term_start" in w for w in result["warnings"])
