@@ -12,6 +12,14 @@ CHAIN = [
 ]
 
 
+INPUT_SCHEMA: dict = {
+    "completed_skills": "list | None",
+    "current_skill": "str | None",
+    "preread_dispatched": "str | None",
+    "rubric_followups_met": "bool | None",
+}
+
+
 def run(input):
   """
   :param input: {

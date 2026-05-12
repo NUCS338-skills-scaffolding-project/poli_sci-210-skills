@@ -12,6 +12,13 @@ SECTIONS = [
 
 COMMIT_CUES = ("i will", "i plan to", "my point", "my argument", "i'd argue", "i want to")
 
+INPUT_SCHEMA: dict = {
+    "current_section": "int",
+    "student_plan": "str",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

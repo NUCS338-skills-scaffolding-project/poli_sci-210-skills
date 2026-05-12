@@ -28,6 +28,15 @@ def _chain_for(mode):
   raise ValueError(f"Unknown mode: {mode!r}. Expected 'plan' or 'draft'.")
 
 
+INPUT_SCHEMA: dict = {
+    "mode": "str | None",
+    "writing_path": "str",
+    "completed_skills": "list | None",
+    "current_skill": "str | None",
+    "preread_dispatched": "str | None",
+}
+
+
 def run(input):
   """
   :param input: {

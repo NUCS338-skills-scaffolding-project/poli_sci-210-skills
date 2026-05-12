@@ -7,6 +7,8 @@ Validates and normalizes the JSON returned by the prompt in skills.md.
 """
 from __future__ import annotations
 
+INPUT_SCHEMA: dict = {}
+
 import json
 import re
 from typing import Any

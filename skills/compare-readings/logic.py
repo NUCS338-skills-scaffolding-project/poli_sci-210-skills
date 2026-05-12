@@ -9,6 +9,12 @@ DIMENSION_CUES = {
   "scope": ("scope", "generalize", "context", "setting", "country", "field"),
 }
 
+INPUT_SCHEMA: dict = {
+    "student_comparison": "str",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

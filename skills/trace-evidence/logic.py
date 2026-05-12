@@ -28,6 +28,19 @@ LOCUS_PATTERN = re.compile(
 VAGUE_LOCUS_CUES = ("results section", "the results", "their results", "the tables", "the figures")
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "prior_in_phase_scratchpads": "dict[str, str] | None",
+    "headline_claim": "str | None",
+    "evidence_locus": "str | None",
+    "evidence_reading": "str | None",
+    "claim_evidence_match": "str | None",
+}
+
+
 def run(input):
   """
   :param input: {

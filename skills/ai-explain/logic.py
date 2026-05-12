@@ -6,6 +6,13 @@
 MIN_FOLLOWUPS = 5
 
 
+INPUT_SCHEMA: dict = {
+    "followup_count": "int",
+    "student_signaled_done": "bool | None",
+    "transcript_path": "str | None",
+}
+
+
 def run(input):
   """
   :param input: {

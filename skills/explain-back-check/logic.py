@@ -10,6 +10,13 @@ def _has_any(text, cues):
   lowered = text.lower()
   return any(c in lowered for c in cues)
 
+INPUT_SCHEMA: dict = {
+    "student_explanation": "str",
+    "concept": "str | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

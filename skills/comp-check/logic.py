@@ -8,6 +8,13 @@ import re
 THIN_PHRASES = ("i think", "something about", "i guess", "basically", "kind of", "sort of")
 SECTION_PAT = re.compile(r"\b(section|chapter|page|pp?\.|fig(ure)?|table|intro|conclusion)\b", re.I)
 
+INPUT_SCHEMA: dict = {
+    "student_text": "str",
+    "layer": "str",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

@@ -10,6 +10,15 @@ SOURCE_PAT = re.compile(r"https?://|www\.|\([12]\d{3}\)|\bet al\b", re.I)
 def _terms(text):
   return {w for w in re.findall(r"[a-zA-Z]{4,}", text.lower())}
 
+INPUT_SCHEMA: dict = {
+    "ai_claim": "str",
+    "course_claim": "str",
+    "gaps_named": "bool | None",
+    "corrections_named": "bool | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

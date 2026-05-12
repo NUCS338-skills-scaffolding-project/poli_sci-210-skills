@@ -1,6 +1,9 @@
 # logic.py — Reusable skill logic
 # Teams should replace this with their actual implementation
 
+INPUT_SCHEMA: dict = {}
+
+
 def run(input):
   """
   Main entry point for this skill.

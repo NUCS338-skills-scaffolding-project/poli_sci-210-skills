@@ -13,6 +13,14 @@ TRANSITION_WORDS = {
 }
 ALL_TRANSITIONS = tuple(w for group in TRANSITION_WORDS.values() for w in group)
 
+INPUT_SCHEMA: dict = {
+    "text_before": "str",
+    "text_after": "str",
+    "student_relationship": "str | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

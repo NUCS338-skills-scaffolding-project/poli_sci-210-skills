@@ -23,6 +23,14 @@ CHAIN = [
 HANDOFF = "scaffold-writing"
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int | None",
+    "article_path": "str | None",
+    "completed_phases": "list | None",
+    "current_phase": "str | None",
+}
+
+
 def run(input):
   """
   :param input: {

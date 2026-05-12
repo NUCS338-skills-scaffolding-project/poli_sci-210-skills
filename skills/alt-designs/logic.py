@@ -61,6 +61,16 @@ def _entry_complete(entry):
   return True
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "prior_in_phase_scratchpads": "dict[str, str] | None",
+    "alternatives": "list | None",
+}
+
+
 def run(input):
   """
   :param input: {

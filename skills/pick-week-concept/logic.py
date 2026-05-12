@@ -27,6 +27,15 @@ def _is_specific(concept_phrase):
   return True
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int | None",
+    "concept_phrase": "str | None",
+    "ai_prompt": "str | None",
+    "has_hypothesis": "bool | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

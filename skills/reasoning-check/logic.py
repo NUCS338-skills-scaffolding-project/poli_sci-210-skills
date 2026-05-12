@@ -10,6 +10,15 @@ WARRANT_CUES = ("because", "since", "which means", "this shows", "this means", "
 ASSUMPTION_CUES = ("obviously", "clearly", "of course", "everyone knows", "it's just", "naturally")
 HEDGE_CUES = ("maybe", "i think", "kind of", "sort of", "possibly", "might")
 
+INPUT_SCHEMA: dict = {
+    "claim": "str",
+    "evidence": "str",
+    "warrant": "str",
+    "student_addressed_gap": "bool | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

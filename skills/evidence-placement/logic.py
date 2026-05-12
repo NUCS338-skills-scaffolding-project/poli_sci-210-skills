@@ -5,6 +5,17 @@
 
 EVIDENCE_MARKERS = ("quote", "\"", "“", "data", "table", "figure", "statistic", "percent", "%", "survey", "interview")
 
+INPUT_SCHEMA: dict = {
+    "claim_text": "str",
+    "evidence_text": "str",
+    "claim_paragraph": "int",
+    "evidence_paragraph": "int",
+    "claim_sentence_idx": "int | None",
+    "evidence_sentence_idx": "int | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

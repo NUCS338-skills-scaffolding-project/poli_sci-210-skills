@@ -26,6 +26,17 @@ def _looks_like_topic_restatement(s):
   return any(s_low.startswith(c) for c in TOPIC_RESTATEMENT_CUES)
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "puzzle": "str | None",
+    "answer": "str | None",
+    "abstract_overlap_high": "bool | None",
+}
+
+
 def run(input):
   """
   :param input: {

@@ -25,6 +25,13 @@ def _classify(summary):
     return None
   return max(scores, key=lambda k: (scores[k], -CANONICAL_ORDER.index(k) if k in CANONICAL_ORDER else 0))
 
+INPUT_SCHEMA: dict = {
+    "section_summaries": "list[str]",
+    "student_transitions": "list[str]",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

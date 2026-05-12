@@ -10,6 +10,16 @@ TEMPLATES = {
   "matching": "Match each term to its definition:\n  terms: {terms}\n  definitions: {defs}",
 }
 
+INPUT_SCHEMA: dict = {
+    "topic": "str",
+    "level": "str",
+    "format": "str",
+    "student_answers_count": "int | None",
+    "answers_above_recall_level": "bool | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

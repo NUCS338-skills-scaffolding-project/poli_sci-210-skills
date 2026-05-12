@@ -56,6 +56,16 @@ def _identification_is_generic(value):
   return cue_hit and word_count <= 4
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "prior_in_phase_scratchpads": "dict[str, str] | None",
+    "design": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

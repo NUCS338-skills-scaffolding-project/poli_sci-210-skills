@@ -10,6 +10,14 @@ OBJECTIVES = [
   "communicate research processes and findings",
 ]
 
+INPUT_SCHEMA: dict = {
+    "student_text": "str",
+    "week_topic": "str",
+    "learning_objectives": "list[str] | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

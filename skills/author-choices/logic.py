@@ -39,6 +39,16 @@ def _has_judgment_language(entry):
   return any(c in blob for c in JUDGMENT_CUES)
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "prior_in_phase_scratchpads": "dict[str, str] | None",
+    "choices": "list | None",
+}
+
+
 def run(input):
   """
   :param input: {

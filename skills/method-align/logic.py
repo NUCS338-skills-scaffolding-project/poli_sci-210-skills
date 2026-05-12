@@ -114,6 +114,16 @@ def _family_for(concern_text, method):
   return None
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "prior_in_phase_scratchpads": "dict[str, str] | None",
+    "concerns": "list | None",
+}
+
+
 def run(input):
   """
   :param input: {

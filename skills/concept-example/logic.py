@@ -4,6 +4,15 @@
 
 CONCRETE_CUES = ("i ", "we ", "they ", "flip", "assign", "ask", "measure", "sample", "survey")
 
+INPUT_SCHEMA: dict = {
+    "concept": "str",
+    "student_example": "str",
+    "defining_feature": "str",
+    "feature_cues": "list[str] | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

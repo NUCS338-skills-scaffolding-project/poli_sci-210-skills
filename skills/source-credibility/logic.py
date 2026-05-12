@@ -4,6 +4,13 @@
 
 DIMENSIONS = ["venue", "method", "limitations", "verdict"]
 
+INPUT_SCHEMA: dict = {
+    "addressed": "dict[str, bool] | None",
+    "latest_dimension": "str | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {

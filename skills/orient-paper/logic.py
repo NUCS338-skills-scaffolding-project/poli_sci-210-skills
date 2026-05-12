@@ -21,6 +21,17 @@ VALID_METHODS = (
 )
 
 
+INPUT_SCHEMA: dict = {
+    "week": "int",
+    "method": "str",
+    "article_path": "str",
+    "prior_session_logs": "list[str] | None",
+    "completed_skills": "list | None",
+    "current_skill": "str | None",
+    "preread_dispatched": "str | None",
+}
+
+
 def run(input):
   """
   :param input: {
