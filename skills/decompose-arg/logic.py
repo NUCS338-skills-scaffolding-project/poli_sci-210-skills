@@ -8,6 +8,15 @@ SHAPE_CUES = (
   "leads to", "builds on", "independent", "depends on", "rests on",
 )
 
+INPUT_SCHEMA: dict = {
+    "thesis": "str | None",
+    "main_claims": "list[str] | None",
+    "sub_supports": "dict[str, list[str]] | None",
+    "shape_description": "str | None",
+    "tutor_pre_read": "dict | None",
+}
+
+
 def run(input):
   """
   :param input: {
