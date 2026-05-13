@@ -8,6 +8,10 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "decompose-arguments"
   - "identify-evidence"
+trigger_signals: 
+  - "lists-author-without-evidence"
+  - "whats-the-argument"
+  - "summary-flattens-argument"
 python_entry: "logic.py"
 ---
 
@@ -29,7 +33,7 @@ Leads students to see a complex argument as a hierarchy — a thesis sitting abo
 - One level at a time. Don't jump from thesis to evidence — walk down a step.
 - Work from the student's initial understanding — even if incomplete, it's a starting point.
 - If they haven't read the text carefully, send them back — this skill doesn't work on half-remembered readings.
-- Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
+- Be concise. One sentence or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
 Before Step 1, silently build your own canonical decomposition of the paper: a candidate thesis, the 2–4 main claims you'd nominate as sitting directly under it, and one piece of support under each.

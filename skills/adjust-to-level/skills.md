@@ -1,6 +1,7 @@
 ---
 skill_id: "adjust-to-level"
 name: "Adjust to Level"
+owner_team: "POLISCI-210"
 skill_type: "instructional"
 stance: "meta"
 tags: ["meta", "calibration", "scaffolding"]
@@ -12,6 +13,9 @@ learning_goal_tags:
 trigger_signals:
   - "student-confused-by-vocabulary"
   - "student-ahead-of-current-framing"
+  - "repeated-asks-for-clarification"
+  - "this-is-too-basic"
+  - "explain-it-more-simply"
 ---
 
 # Adjust to Level

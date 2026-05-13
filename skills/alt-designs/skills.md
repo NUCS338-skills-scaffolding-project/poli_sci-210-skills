@@ -9,6 +9,12 @@ learning_goal_tags:
   - "surface-assumptions"
   - "engage-objections"
   - "construct-arguments"
+trigger_signals:
+  - "form-critique-ran"
+  - "inference-threats-ran"
+  - "scope-check-ran"
+  - "mid-critique-but-stuck"
+  - "critiquing-design-of-experiment"
 python_entry: "logic.py"
 ---
 

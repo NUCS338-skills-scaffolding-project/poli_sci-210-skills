@@ -9,6 +9,8 @@ learning_goal_tags:
   - "request-targeted-help"
   - "interpret-evidence"
 python_entry: "logic.py"
+trigger_signals:
+  - "working-on-ai-memo"
 ---
 
 # Explore Concept with AI

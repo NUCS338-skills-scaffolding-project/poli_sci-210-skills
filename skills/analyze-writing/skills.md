@@ -10,6 +10,13 @@ learning_goal_tags:
   - "ensure-cohesion"
   - "place-evidence"
   - "evaluate-reasoning"
+trigger_signals:
+  - "student-working-on-writing"
+  - "asks-for-help-analyzing-writing"
+  - "student-starting-writing"
+  - "look-at-my-paper"
+  - "help-me-revise-this"
+  - "help-me-edit-this"
 python_entry: "logic.py"
 ---
 

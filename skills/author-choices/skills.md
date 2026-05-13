@@ -9,6 +9,11 @@ learning_goal_tags:
   - "surface-assumptions"
   - "evaluate-reasoning"
   - "interpret-evidence"
+trigger_signalstrigger_signals:
+  - "orient-paper-ran"
+  - "first-pass-orient-skill-ran" 
+  - "trace-evidence-skill-ran"
+  - "discussing-strength-of-authors"
 python_entry: "logic.py"
 ---
 
