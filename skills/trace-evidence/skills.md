@@ -10,6 +10,8 @@ learning_goal_tags:
   - "interpret-evidence"
   - "verify-claims"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Trace Claim to Evidence

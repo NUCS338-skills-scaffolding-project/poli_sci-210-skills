@@ -9,6 +9,8 @@ learning_goal_tags:
   - "ensure-cohesion"
   - "structure-paragraphs"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Cohesion Strengthening

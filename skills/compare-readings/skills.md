@@ -9,6 +9,8 @@ learning_goal_tags:
   - "interpret-evidence"
   - "evaluate-reasoning"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Compare Two Readings

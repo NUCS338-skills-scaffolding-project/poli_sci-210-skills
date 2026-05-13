@@ -18,6 +18,8 @@ trigger_signals:
   - "help-me-revise-this"
   - "help-me-edit-this"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Analyze Writing

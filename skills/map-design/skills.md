@@ -10,6 +10,8 @@ learning_goal_tags:
   - "identify-evidence"
   - "interpret-evidence"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Extract Research Design

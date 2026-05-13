@@ -9,6 +9,8 @@ learning_goal_tags:
   - "restate-the-problem"
   - "identify-evidence"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # First-Pass Orient

@@ -13,6 +13,8 @@ trigger_signals:
   - "student-skips-stats-output"
   - "significant-without-magnitude"
   - "conflates-significance-with-importance"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Statistical Intuition

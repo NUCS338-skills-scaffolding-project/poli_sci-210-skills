@@ -12,6 +12,8 @@ learning_goal_tags:
 trigger_signals:
   - "stuck-after-multiple-socratic-prompts"
   - "student-cant-name-applicable-concept"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Conceptual Hint

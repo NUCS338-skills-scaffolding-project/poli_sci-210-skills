@@ -13,6 +13,8 @@ trigger_signals:
   - "about-to-run-without-prediction"
   - "trial-and-error-debugging"
   - "about-to-reveal-result"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Ask for Prediction

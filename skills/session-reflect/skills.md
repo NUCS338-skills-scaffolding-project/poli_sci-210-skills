@@ -13,6 +13,8 @@ trigger_signals:
   - "session-wrapping-up"
   - "chain-just-completed"
   - "pre-quiz-or-section"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Session Reflect

@@ -10,6 +10,8 @@ learning_goal_tags:
   - "manage-effort"
   - "request-targeted-help"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Generate Study Questions

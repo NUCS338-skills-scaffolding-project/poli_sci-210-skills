@@ -6,6 +6,8 @@ tags: ["import", "syllabus", "course-setup"]
 course_types: ["cs", "humanities"]
 learning_goal_tags: []
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Extract Syllabus

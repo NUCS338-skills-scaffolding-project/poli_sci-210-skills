@@ -13,6 +13,8 @@ trigger_signals:
   - "too-close-to-own-draft"
   - "doing-peer-review"
   - "pre-submission-final-pass"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Play Reviewer

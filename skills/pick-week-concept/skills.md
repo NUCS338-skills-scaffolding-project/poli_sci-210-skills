@@ -10,6 +10,8 @@ learning_goal_tags:
   - "bound-scope"
   - "restate-the-problem"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Pick Week Concept

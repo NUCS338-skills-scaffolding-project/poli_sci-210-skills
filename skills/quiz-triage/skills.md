@@ -13,6 +13,8 @@ trigger_signals:
   - "ran-out-of-time"
   - "low-quiz-score-despite-knowing-material"
   - "stuck-on-one-question"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Quiz Triage

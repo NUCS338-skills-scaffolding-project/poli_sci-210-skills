@@ -13,6 +13,8 @@ trigger_signals:
   - "student-overgeneralizes"
   - "student-asserts-absolute"
   - "student-defending-first-position"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Counter-Example

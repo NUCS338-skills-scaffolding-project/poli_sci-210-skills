@@ -13,6 +13,8 @@ trigger_signals:
   - "whats-the-argument"
   - "summary-flattens-argument"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Argument Decomposition

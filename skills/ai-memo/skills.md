@@ -11,6 +11,8 @@ learning_goal_tags:
   - "reflect-on-progress"
   - "evaluate-reasoning"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # AI Memo

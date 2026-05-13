@@ -13,6 +13,8 @@ trigger_signals:
   - "research-idea-without-prediction"
   - "unfalsifiable-hypothesis"
   - "conflates-question-with-hypothesis"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Frame Hypothesis

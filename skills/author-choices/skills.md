@@ -15,6 +15,8 @@ trigger_signalstrigger_signals:
   - "trace-evidence-skill-ran"
   - "discussing-strength-of-authors"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Probe Author Choices

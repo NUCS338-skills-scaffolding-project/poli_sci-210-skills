@@ -16,6 +16,8 @@ trigger_signals:
   - "repeated-asks-for-clarification"
   - "this-is-too-basic"
   - "explain-it-more-simply"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Adjust to Level

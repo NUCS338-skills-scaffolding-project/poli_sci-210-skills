@@ -10,6 +10,8 @@ learning_goal_tags:
   - "bound-scope"
   - "structure-paragraphs"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Scaffold Written Assignment

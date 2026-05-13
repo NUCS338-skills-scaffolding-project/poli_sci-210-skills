@@ -12,6 +12,8 @@ learning_goal_tags:
 trigger_signals:
   - "student-stuck-on-abstraction"
   - "abstract-prompts-not-landing"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Reframe with Trace

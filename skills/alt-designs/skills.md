@@ -16,6 +16,8 @@ trigger_signals:
   - "mid-critique-but-stuck"
   - "critiquing-design-of-experiment"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Alternative Design Brainstorm

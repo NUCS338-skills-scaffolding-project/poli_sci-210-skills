@@ -10,6 +10,8 @@ learning_goal_tags:
   - "surface-assumptions"
   - "reflect-on-progress"
 python_entry: "logic.py"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Reflect on AI Response

@@ -11,6 +11,8 @@ learning_goal_tags:
 python_entry: "logic.py"
 trigger_signals:
   - "working-on-ai-memo"
+status: "ready"
+version: "0.2.0"
 ---
 
 # Explore Concept with AI
