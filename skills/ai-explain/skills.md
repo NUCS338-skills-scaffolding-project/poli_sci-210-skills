@@ -2,7 +2,7 @@
 skill_id: "ai-explain"
 name: "Explore Concept with AI"
 skill_type: "instructional"
-stance: "hint"
+stance: "meta"
 tags: ["ai-memo", "rote-ai-mode", "explanation"]
 course_types: ["humanities"]
 learning_goal_tags:
@@ -11,6 +11,11 @@ learning_goal_tags:
 python_entry: "logic.py"
 trigger_signals:
   - "working-on-ai-memo"
+  - "student-requested-ai-source-mode"
+  - "act-as-ai-for-memo"
+  - "chatbot-source-needed"
+  - "concept-explanation-for-memo"
+  - "ai-memo-step-two"
 status: "ready"
 version: "0.2.0"
 ---
@@ -104,7 +109,7 @@ Format:
 **Concept:** <concept phrase>
 **Initial prompt:** <ai_prompt sentence>
 **Captured:** <YYYY-MM-DD HH:MM>
-**Source:** Claude (rote AI mode, POLI SCI 210 ai-memo skill)
+**Source:** Claude (rote AI mode, ai-memo chain)
 
 ---
 
