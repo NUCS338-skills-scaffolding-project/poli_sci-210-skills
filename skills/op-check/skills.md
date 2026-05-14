@@ -51,7 +51,7 @@ Method-aware focus areas:
 - `small-n`: what counts as evidence of a within-case mechanism; coding of the case as "outcome present/absent."
 - `machine-learning`: label definition (what's labeled as positive/negative), feature definition.
 
-> **Adopter note:** The 7 method-aware focus areas above reflect POLI SCI 210's curriculum. The concept-to-measure bridging move is general for any empirical paper critique, but the per-method foci are not. An adopting team should swap these to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
+> **Adopter note:** The 7 method-aware focus areas above reflect POLI SCI 210's curriculum. The concept-to-measure bridging move is general for any empirical paper critique. **The method *list* is now metadata-driven** — `logic.py`'s `VALID_METHODS` reads from `metadata.yaml.course_context.research_methods` at module load. **The per-method focus areas in this section still hard-code POLI SCI 210's coverage** and must be edited skill-by-skill. A catalog-wide refactor parameterizing the prose too is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 

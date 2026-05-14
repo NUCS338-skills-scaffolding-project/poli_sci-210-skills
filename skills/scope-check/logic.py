@@ -4,16 +4,33 @@
 # not extend, across at least 2 different categories. Pure function; no side
 # effects.
 
-VALID_METHODS = (
-  "theory-data",
-  "inference",
-  "surveys",
-  "experiments",
-  "large-n",
-  "small-n",
-  "machine-learning",
-)
+# VALID_METHODS reads from metadata.yaml.course_context.research_methods at
+# module load. Hard-coded POLI SCI 210 defaults are used as a defensive
+# fallback when metadata is unreadable, missing, or malformed. Adopters
+# customize the method set by editing metadata.yaml only. See
+# docs/audits/cross-cutting.md entry CC-2.
+def _load_valid_methods():
+    _DEFAULT = (
+        "theory-data", "inference", "surveys", "experiments",
+        "large-n", "small-n", "machine-learning",
+    )
+    try:
+        import yaml
+        from pathlib import Path
+        md_path = Path(__file__).parent.parent.parent / "metadata.yaml"
+        if not md_path.is_file():
+            return _DEFAULT
+        with open(md_path) as f:
+            md = yaml.safe_load(f) or {}
+        methods = (md.get("course_context") or {}).get("research_methods")
+        if isinstance(methods, list) and methods and all(isinstance(m, str) for m in methods):
+            return tuple(methods)
+        return _DEFAULT
+    except Exception:
+        return _DEFAULT
 
+
+VALID_METHODS = _load_valid_methods()
 VALID_CATEGORIES = ("population", "temporal", "contextual", "manipulation", "outcome")
 MIN_CONDITIONS = 2
 TARGET_CONDITIONS = 3

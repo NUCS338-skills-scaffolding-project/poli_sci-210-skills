@@ -57,7 +57,7 @@ Method-aware emphasis (use as nudge categories):
 - `small-n`: contextual + population (which other cases would we expect this in?).
 - `machine-learning`: distribution shift across all five — population, temporal, contextual, dose (input intensity), outcome (label drift).
 
-> **Adopter note:** The 7 method-aware emphasis bullets above reflect POLI SCI 210's curriculum. The five scope categories themselves (population, temporal, contextual, manipulation/dose, outcome) are general across empirical paper critique, but the per-method nudges are not. An adopting team should swap these nudges to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
+> **Adopter note:** The 7 method-aware emphasis bullets above reflect POLI SCI 210's curriculum. The five scope categories themselves (population, temporal, contextual, manipulation/dose, outcome) are general across empirical paper critique. **The method *list* is now metadata-driven** — `logic.py`'s `VALID_METHODS` reads from `metadata.yaml.course_context.research_methods` at module load. **The per-method emphasis bullets in this section still hard-code POLI SCI 210's coverage** and must be edited skill-by-skill. A catalog-wide refactor parameterizing the prose too is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 ## Tutor Pre-Read & Notes
 Before Step 1, read the paper's discussion / scope / external-validity section so you know what the paper claims about generalization and what it concedes. Read both prior phase logs. For each of the five scope categories, silently note: where could this claim plausibly fail to extend? Is the paper itself silent on it?

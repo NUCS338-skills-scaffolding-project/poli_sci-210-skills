@@ -61,6 +61,25 @@ course_context:
       - "Their critique (main point + evidence)"
       - "What they'd change"
 
+  # Research methods recognized by the RDC chain's validators and the
+  # per-method content in 10 RDC skills (catalogs, checklists, focus areas,
+  # locus expectations, etc.). This is the canonical list. Each affected
+  # logic.py reads it at module load and uses it as the source of truth
+  # for VALID_METHODS, with a hard-coded POLI SCI 210 default as a
+  # defensive fallback when metadata is unreadable. An adopting team
+  # replaces this list to match their course's methodological coverage;
+  # the in-skill prose content (per-method nudges) still requires
+  # adopter edits skill-by-skill — see cross-cutting.md CC-2 for the
+  # full refactor proposal that would parameterize the prose too.
+  research_methods:
+    - "theory-data"
+    - "inference"
+    - "surveys"
+    - "experiments"
+    - "large-n"
+    - "small-n"
+    - "machine-learning"
+
 # ---------------------------------------------------------------------------
 # paths — filesystem conventions for course materials and per-student outputs.
 # All paths are relative to the repo root. Skills fall back to host-runtime
