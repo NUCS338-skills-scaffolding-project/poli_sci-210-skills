@@ -8,6 +8,13 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "ensure-cohesion"
   - "structure-paragraphs"
+  - "place-evidence"
+trigger_signals:
+  - "feels-choppy"
+  - "writing-doesnt-flow"
+  - "transitions-weak"
+  - "ideas-dont-connect"
+  - "improve-paragraph-flow"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
