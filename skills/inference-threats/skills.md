@@ -9,6 +9,12 @@ learning_goal_tags:
   - "evaluate-reasoning"
   - "surface-assumptions"
   - "engage-objections"
+trigger_signals:
+  - "inference-threat-spotting"
+  - "whats-wrong-with-inference"
+  - "causal-claim-shaky"
+  - "phase-3-step-1"
+  - "threats-to-validity"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -88,6 +94,8 @@ The student picks from the catalog matching the paper's `method`. Each catalog i
 - Weak baseline (the headline performance gap is against a straw model).
 - Metric mismatch (the metric doesn't operationalize the substantive question).
 - Overfitting via test-set tuning.
+
+> **Adopter note:** The 7 method-specific threat catalogs above reflect POLI SCI 210's curriculum. This skill carries the **largest per-method content footprint** of any skill in the catalog — ~35-49 method-specific items across the 7 catalogs. The threat-spotting move itself is general for any empirical paper critique, but the catalogs are not. An adopting team must replace each catalog with threats appropriate to their course's methodological coverage before this skill produces useful output for them. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2; this skill is the heaviest candidate for that refactor.
 
 ## Tutor Pre-Read & Notes
 Before Step 1, read the article's discussion / limitations / robustness section so you know what the paper acknowledges. Read both prior phase logs. For each catalog item, silently note: does this threat plausibly apply? What design element ties it? How load-bearing is it for the headline claim?
