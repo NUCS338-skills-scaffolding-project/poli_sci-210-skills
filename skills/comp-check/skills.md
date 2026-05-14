@@ -3,12 +3,18 @@ skill_id: "comp-check"
 name: "Reading Comprehension Check"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["reading", "comprehension"]
+tags: ["reading", "comprehension", "paper", "section-prep"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "identify-evidence"
   - "interpret-evidence"
   - "restate-the-problem"
+trigger_signals:
+  - "didnt-get-the-reading"
+  - "what-was-the-reading-about"
+  - "preparing-for-section"
+  - "reading-comprehension-help"
+  - "explain-this-paper"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
