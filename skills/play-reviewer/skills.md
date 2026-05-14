@@ -13,6 +13,8 @@ trigger_signals:
   - "too-close-to-own-draft"
   - "doing-peer-review"
   - "pre-submission-final-pass"
+  - "pre-submission-review"
+  - "find-flaws-in-draft"
 status: "ready"
 version: "0.2.0"
 ---
