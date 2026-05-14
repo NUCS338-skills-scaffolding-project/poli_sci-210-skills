@@ -50,6 +50,8 @@ Use as nudge categories, not a closed list. The student picks; you nudge by cate
 - `small-n`: paired comparison case (most-similar systems design); structured-focused comparison across additional cases; within-case process-tracing tests; explicit attention to disconfirming evidence.
 - `machine-learning`: stronger baseline; temporal hold-out; out-of-distribution evaluation; label-quality audit; ablation of feature families to isolate predictive content.
 
+> **Adopter note:** The 7 categories above (and the matching `VALID_METHODS` tuple in `logic.py`) reflect POLI SCI 210's curriculum. The RDC chain itself is generic for any course teaching empirical paper critique, but the method tags and per-method nudge content are not. An adopting team should swap these categories — and the corresponding `logic.py` tuple — to match their course's methodological coverage before relying on this skill. A catalog-wide refactor (parameterizing the method list via `metadata.yaml.course_context.research_methods`) is logged for a future pass; until that lands, this skill is adopted-with-edits.
+
 ## Tutor Pre-Read & Notes
 Before Step 1, read both prior phase logs and the prior in-phase scratchpads (`inference-threats` and `scope-check`). For each load-bearing critique surfaced, silently propose one or two design changes that would address it. For each, note feasibility (what data, instrument, or access would be needed) and the predicted claim_movement.
 
