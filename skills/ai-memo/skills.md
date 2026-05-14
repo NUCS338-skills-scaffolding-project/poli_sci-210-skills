@@ -10,6 +10,12 @@ learning_goal_tags:
   - "surface-assumptions"
   - "reflect-on-progress"
   - "evaluate-reasoning"
+trigger_signals:
+  - "start-ai-memo"
+  - "ai-memo-week-N"
+  - "ai-memo-workflow"
+  - "guided-ai-memo"
+  - "ai-memo-assignment-open"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -166,13 +172,17 @@ The sub-skill expects `ai_claim` and `course_claim` inputs; pull `ai_claim` from
 In parallel, dispatch a pre-read subagent for `scaffold-writing`.
 
 ### Step 6 — Run scaffold-writing (tutor mode, continued)
-After `eval-ai-response` closes and the student confirms the transition, open `scaffold-writing`. The relevant assignment is the AI memo (500–1000 words), and the structure should track the syllabus's evaluative questions:
+After `eval-ai-response` closes and the student confirms the transition, open `scaffold-writing`. The relevant assignment is the AI memo (500–1000 words), and the structure should track the course's evaluative questions for this assignment.
+
+**Default questions** (resolved from `course_context.ai_memo_evaluative_questions` in `metadata.yaml`):
 1. What did you ask the AI and what did it say?
 2. How does that compare to the course material?
 3. Why is it different / more or less helpful?
 4. Are the AI's recommended sources credible?
 
-Pass these as section anchors to the sub-skill's pre-read.
+**Adopter fallback (no `ai_memo_evaluative_questions` key in metadata, or empty list):** use the four defaults above (POLI SCI 210's syllabus shape) and ask the student in your Step 6 opening whether their course has a different rubric for this assignment. If they say yes, swap the section anchors to their version before opening `scaffold-writing`.
+
+Pass the resolved questions as section anchors to the sub-skill's pre-read.
 
 ### Step 7 — Append per-skill block + advance
 After each sub-skill closes (heuristic gate or narrative override) and the student confirms "ready to move on":

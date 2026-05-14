@@ -31,6 +31,17 @@ course_context:
   # Read by: pick-week-concept (week-validity gate).
   weeks_in_session: [2, 3, 4, 5, 6, 7, 8, 9]
 
+  # Evaluative questions used as section anchors when scaffolding an AI memo.
+  # Read by: ai-memo (Step 6, when handing off to scaffold-writing).
+  # An adopting team replaces this list with its own assignment rubric.
+  # If missing or empty, ai-memo falls back to the defaults documented in
+  # its skills.md (POLI SCI 210's syllabus shape).
+  ai_memo_evaluative_questions:
+    - "What did you ask the AI and what did it say?"
+    - "How does that compare to the course material?"
+    - "Why is it different / more or less helpful?"
+    - "Are the AI's recommended sources credible?"
+
 # ---------------------------------------------------------------------------
 # paths — filesystem conventions for course materials and per-student outputs.
 # All paths are relative to the repo root. Skills fall back to host-runtime
