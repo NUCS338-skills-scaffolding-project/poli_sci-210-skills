@@ -8,10 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "decompose-arguments"
   - "identify-evidence"
-trigger_signals: 
+  - "interpret-evidence"
+  - "evaluate-reasoning"
+trigger_signals:
   - "lists-author-without-evidence"
   - "whats-the-argument"
   - "summary-flattens-argument"
+  - "argument-hierarchy-needed"
+  - "what-supports-the-thesis"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
