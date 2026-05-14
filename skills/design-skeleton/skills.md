@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "decompose-arguments"
   - "identify-evidence"
+  - "specify-io"
+  - "evaluate-reasoning"
+trigger_signals:
+  - "design-skeleton-needed"
+  - "whats-the-design"
+  - "cant-describe-methodology"
+  - "map-design-step-1"
+  - "seven-fields-skeleton"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -40,6 +48,8 @@ Before Step 1, silently fill in your own version of the seven fields for THIS pa
 - `large-n`: same as inference, plus model specification belongs in identification strategy.
 - `small-n`: sample → "case selection logic"; identification → "process tracing / structured comparison"; comparison → "across cases" or "n/a — single case" with rationale.
 - `machine-learning`: IV/treatment → "input features / predictors"; DV/outcome → "label / target"; identification → "evaluation framework (train/test split, baselines)"; comparison → "baseline model(s) and the human/null counterfactual."
+
+> **Adopter note:** The 7 method-aware label translations above (and the matching `VALID_METHODS` tuple in `logic.py`) reflect POLI SCI 210's curriculum. The seven canonical design fields themselves (research_question, unit_of_analysis, sample, IV, DV, identification, comparison) are general across empirical paper critique, but the per-method translations are not. An adopting team should swap these per-method blocks — and the `logic.py` tuple — to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
