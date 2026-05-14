@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "place-evidence"
   - "structure-paragraphs"
+  - "ensure-cohesion"
+  - "evaluate-reasoning"
+trigger_signals:
+  - "evidence-feels-misplaced"
+  - "should-this-go-here"
+  - "evidence-disconnected"
+  - "evidence-placement-review"
+  - "quote-out-of-place"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
