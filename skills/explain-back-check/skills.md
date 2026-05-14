@@ -3,12 +3,18 @@ skill_id: "explain-back-check"
 name: "Explain-Back Check"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["concepts", "metacognition"]
+tags: ["concepts", "metacognition", "feynman", "quiz-prep"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "restate-the-problem"
   - "surface-assumptions"
   - "reflect-on-progress"
+trigger_signals:
+  - "i-get-it-but-cant-explain"
+  - "feynman-check"
+  - "test-my-understanding"
+  - "concept-quiz-self-check"
+  - "explain-this-concept"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
