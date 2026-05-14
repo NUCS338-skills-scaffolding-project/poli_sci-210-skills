@@ -3,11 +3,18 @@ skill_id: "compare-readings"
 name: "Compare Two Readings"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["reading", "synthesis"]
+tags: ["reading", "synthesis", "comparison", "section-prep"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "interpret-evidence"
   - "evaluate-reasoning"
+  - "decompose-arguments"
+trigger_signals:
+  - "compare-two-papers"
+  - "are-they-the-same"
+  - "which-is-better"
+  - "comparing-articles"
+  - "synthesize-two-readings"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
