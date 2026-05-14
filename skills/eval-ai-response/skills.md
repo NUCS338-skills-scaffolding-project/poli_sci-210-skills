@@ -3,12 +3,18 @@ skill_id: "eval-ai-response"
 name: "Reflect on AI Response"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["ai-literacy", "critique"]
+tags: ["ai-literacy", "critique", "ai-memo", "evaluation"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "verify-claims"
   - "surface-assumptions"
   - "reflect-on-progress"
+trigger_signals:
+  - "is-ai-answer-right"
+  - "ai-explained-this-concept"
+  - "evaluate-ai-response"
+  - "ai-memo-step-3"
+  - "compare-ai-to-course"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
