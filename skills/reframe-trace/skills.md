@@ -12,6 +12,9 @@ learning_goal_tags:
 trigger_signals:
   - "student-stuck-on-abstraction"
   - "abstract-prompts-not-landing"
+  - "i-dont-get-it-in-practice"
+  - "cant-apply-abstraction"
+  - "need-concrete-example"
 status: "ready"
 version: "0.2.0"
 ---
