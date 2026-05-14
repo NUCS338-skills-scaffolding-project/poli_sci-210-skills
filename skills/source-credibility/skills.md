@@ -3,11 +3,19 @@ skill_id: "source-credibility"
 name: "Evaluate Source Credibility"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["research", "critique"]
+tags: ["research", "critique", "credibility", "source-evaluation"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "verify-claims"
   - "surface-assumptions"
+  - "evaluate-reasoning"
+  - "engage-objections"
+trigger_signals:
+  - "is-this-paper-credible"
+  - "evaluate-source"
+  - "trust-this-paper"
+  - "credibility-check"
+  - "peer-review-quality"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -27,7 +35,7 @@ Guide the student through assessing whether a source is trustworthy — authorsh
 - Credibility is a structured question, not a gut feeling. Walk through the dimensions one at a time.
 - The student makes the call, not you. You surface evidence; they weigh it.
 - "Peer-reviewed" is a starting point, not an ending one. Published papers still have credibility seams.
-- If the student hasn't extracted the paper's argument yet, send them to `identify-argument-structure` first — you can't evaluate what you haven't understood.
+- If the student hasn't extracted the paper's argument yet, send them to `decompose-arg` first — you can't evaluate what you haven't understood.
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
