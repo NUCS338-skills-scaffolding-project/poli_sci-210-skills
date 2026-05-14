@@ -88,6 +88,29 @@ course_context:
     - {id: "small-n",          label: "Small-N Qualitative"}
     - {id: "machine-learning", label: "Machine Learning"}
 
+  # Per-week syllabus mapping for the Research Design Critique (RDC) chain.
+  # Each entry binds a course week to the method tag and the specific paper
+  # the student critiques that week. Read by: critique-design/logic.py
+  # (WEEK_METHOD), which uses the mapping to route the student through the
+  # appropriate phase-orchestrator inputs.
+  #
+  # Each entry has:
+  #   - week: int (the in-session week, must appear in weeks_in_session above)
+  #   - method: one of the `id` values from research_methods above
+  #   - paper_short: human-readable short citation, e.g. "Author Year"
+  #
+  # An adopting team replaces this list with its own RDC assignment schedule.
+  # If missing, malformed, or empty, critique-design falls back to the
+  # POLI SCI 210 default mapping hard-coded in its logic.py.
+  rdc_syllabus:
+    - {week: 3, method: "theory-data",      paper_short: "Krcmaric, Nelson & Roberts 2024"}
+    - {week: 4, method: "inference",        paper_short: "Rosenzweig & Wilson 2023"}
+    - {week: 5, method: "surveys",          paper_short: "Naunov 2025"}
+    - {week: 6, method: "experiments",      paper_short: "Coppock, Green & Porter 2026"}
+    - {week: 7, method: "large-n",          paper_short: "Harbridge-Yong, Volden & Wiseman 2023"}
+    - {week: 8, method: "small-n",          paper_short: "Gilbert 2022"}
+    - {week: 9, method: "machine-learning", paper_short: "Libgober & Jerzak 2024"}
+
 # ---------------------------------------------------------------------------
 # paths — filesystem conventions for course materials and per-student outputs.
 # All paths are relative to the repo root. Skills fall back to host-runtime

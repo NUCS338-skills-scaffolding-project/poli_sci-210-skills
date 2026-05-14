@@ -4,15 +4,52 @@
 # signals handoff to scaffold-writing. Pure function; no side
 # effects. Each week maps to a method tag that downstream skills branch on.
 
-WEEK_METHOD = {
-  3: ("theory-data",      "Krcmaric, Nelson & Roberts 2024"),
-  4: ("inference",        "Rosenzweig & Wilson 2023"),
-  5: ("surveys",          "Naunov 2025"),
-  6: ("experiments",      "Coppock, Green & Porter 2026"),
-  7: ("large-n",          "Harbridge-Yong, Volden & Wiseman 2023"),
-  8: ("small-n",          "Gilbert 2022"),
-  9: ("machine-learning", "Libgober & Jerzak 2024"),
-}
+# WEEK_METHOD reads from metadata.yaml.course_context.rdc_syllabus at module
+# load. Hard-coded POLI SCI 210 defaults are used as a defensive fallback
+# when metadata is unreadable, missing, or malformed. Adopters customize the
+# RDC schedule by editing metadata.yaml only. See docs/audits/cross-cutting.md
+# entry CC-2.
+def _load_week_method():
+    _DEFAULT = {
+        3: ("theory-data",      "Krcmaric, Nelson & Roberts 2024"),
+        4: ("inference",        "Rosenzweig & Wilson 2023"),
+        5: ("surveys",          "Naunov 2025"),
+        6: ("experiments",      "Coppock, Green & Porter 2026"),
+        7: ("large-n",          "Harbridge-Yong, Volden & Wiseman 2023"),
+        8: ("small-n",          "Gilbert 2022"),
+        9: ("machine-learning", "Libgober & Jerzak 2024"),
+    }
+    try:
+        import yaml
+        from pathlib import Path
+        md_path = Path(__file__).parent.parent.parent / "metadata.yaml"
+        if not md_path.is_file():
+            return _DEFAULT
+        with open(md_path) as f:
+            md = yaml.safe_load(f) or {}
+        syl = (md.get("course_context") or {}).get("rdc_syllabus")
+        if not isinstance(syl, list) or not syl:
+            return _DEFAULT
+        out = {}
+        for entry in syl:
+            if not isinstance(entry, dict):
+                return _DEFAULT
+            week = entry.get("week")
+            method = entry.get("method")
+            paper = entry.get("paper_short")
+            if (
+                not isinstance(week, int)
+                or not isinstance(method, str)
+                or not isinstance(paper, str)
+            ):
+                return _DEFAULT
+            out[week] = (method, paper)
+        return out if out else _DEFAULT
+    except Exception:
+        return _DEFAULT
+
+
+WEEK_METHOD = _load_week_method()
 
 CHAIN = [
   "orient-paper",
