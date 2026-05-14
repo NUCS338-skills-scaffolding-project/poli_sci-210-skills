@@ -13,6 +13,8 @@ trigger_signals:
   - "research-idea-without-prediction"
   - "unfalsifiable-hypothesis"
   - "conflates-question-with-hypothesis"
+  - "make-hypothesis-falsifiable"
+  - "whats-my-prediction"
 status: "ready"
 version: "0.2.0"
 ---
