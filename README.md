@@ -8,7 +8,7 @@ Tutoring skills library for Northwestern's **Introduction to Empirical Methods i
 
 | | |
 |---|---|
-| **Skills** | 41 (+ 1 template) |
+| **Skills** | 41 tutoring + 1 code skill (`extract-syllabus`, orchestrator-only) + 1 template = **43 folders** |
 | **Orchestrators** | 5 (1 RDC top + 3 RDC phases, 1 writing, 1 AI memo) |
 | **Chains** | 3 end-to-end (RDC, AI memo, analyze-writing) |
 | **Stances covered** | All four — `socratic`, `hint`, `reframe`, `meta` |
@@ -100,6 +100,10 @@ Closes gaps not addressed by the chains: stats interpretation, hypothesis format
 | [`play-reviewer`](skills/play-reviewer/skills.md) | meta | Switch student from writer-mode to reviewer-mode on a draft. |
 | [`session-reflect`](skills/session-reflect/skills.md) | meta | End-of-session reflection log; consolidates across skills. |
 | [`quiz-triage`](skills/quiz-triage/skills.md) | meta | Diagnose during-quiz time/triage failure modes; rule-test. |
+
+### Code skill — orchestrator import utility (1)
+
+[`extract-syllabus`](skills/extract-syllabus/skills.md) — `skill_type: code`. Parses LLM-extracted syllabus text into the structured `{course, assignments, warnings}` JSON the orchestrator's `/syllabus/extract` endpoint expects. Not a tutoring skill; not invoked from any tutor flow. Counted separately from the 41 tutoring skills above. Has formal `fixtures/` + `test_logic.py`.
 
 ### Template (1)
 
