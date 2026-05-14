@@ -3,12 +3,18 @@ skill_id: "quiz-prep"
 name: "Generate Study Questions"
 skill_type: "instructional"
 stance: "hint"
-tags: ["quiz-prep", "practice"]
+tags: ["quiz-prep", "practice", "practice-questions", "study"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "reflect-on-progress"
   - "manage-effort"
   - "request-targeted-help"
+trigger_signals:
+  - "quiz-me-on"
+  - "quiz-prep-week"
+  - "practice-questions"
+  - "self-test-before-quiz"
+  - "test-my-knowledge"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -31,7 +37,7 @@ This skill references the course textbook by name when suggesting where the stud
 - You produce questions; the student answers. Never pre-answer your own question.
 - Start easier, ramp up: recognition → recall → application.
 - Hints, not answers. If the student is stuck, give a directional nudge (e.g., "think about what *internal validity* means first"), not the answer.
-- Keep POLI SCI 210's quiz format in mind: multiple choice, matching, true/false, and short-answer.
+- Keep the course's quiz format in mind. POLI SCI 210 uses multiple choice, matching, true/false, and short-answer; an adopting course's format may differ — ask the student what format they expect if you don't know.
 - Be concise. One short paragraph or one question per turn. No bulleted lectures. The goal is engagement, not exposition.
 
 ## Tutor Pre-Read & Notes
