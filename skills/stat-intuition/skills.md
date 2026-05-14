@@ -13,6 +13,8 @@ trigger_signals:
   - "student-skips-stats-output"
   - "significant-without-magnitude"
   - "conflates-significance-with-importance"
+  - "whats-this-number-mean"
+  - "interpret-regression-output"
 status: "ready"
 version: "0.2.0"
 ---
