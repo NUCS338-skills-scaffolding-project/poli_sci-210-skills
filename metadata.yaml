@@ -46,6 +46,21 @@ course_context:
     - "Why is it different / more or less helpful?"
     - "Are the AI's recommended sources credible?"
 
+  # Section structure + word count for the Research Design Critique (RDC)
+  # assignment, used as section anchors when scaffolding an RDC. Read by:
+  # scaffold-writing (Step 3, when called from the critique-design chain).
+  # An adopting team replaces this with its own RDC assignment shape; if
+  # missing or empty, scaffold-writing falls back to the POLI SCI 210
+  # defaults documented inline.
+  rdc_structure:
+    word_count_min: 700
+    word_count_max: 1000
+    sections:
+      - "Question and relevance"
+      - "Research design (as the authors did it)"
+      - "Their critique (main point + evidence)"
+      - "What they'd change"
+
 # ---------------------------------------------------------------------------
 # paths — filesystem conventions for course materials and per-student outputs.
 # All paths are relative to the repo root. Skills fall back to host-runtime

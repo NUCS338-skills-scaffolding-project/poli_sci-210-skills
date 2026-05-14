@@ -79,13 +79,18 @@ Before structure, ask: "what do you want your critique's main point to be?"
 - If they don't → ask 2–3 probing questions about the study until a point emerges. Don't suggest the point yourself.
 
 ### Step 3 — Walk structure one section at a time · *reconcile beat*
-Name each section they need, ask what they plan to put in it, then move on. Only go to the next section once they have a rough plan for the current one. For the 700–1000 word critique (POLI SCI 210's RDC assignment shape), typical order:
-1. Question and relevance
-2. Research design (as the authors did it)
-3. Their critique (main point + evidence)
-4. What they'd change
+Name each section they need, ask what they plan to put in it, then move on. Only go to the next section once they have a rough plan for the current one.
 
-> **Adopter note:** the 4-section structure above and the 700–1000 word count are POLI SCI 210's RDC assignment shape. For the AI memo (also POLI SCI 210), the section anchors are resolved from `metadata.yaml.course_context.ai_memo_evaluative_questions` (see the `ai-memo` orchestrator's Step 6). An adopting team should pass the relevant assignment's section names and main-point expectations from the calling orchestrator, or — for standalone use — ask the student which sections their rubric requires before opening Step 3 here.
+The section list and word-count target are assignment-specific. Resolve them in priority order:
+
+1. **If the calling orchestrator passes section anchors directly** (e.g., `ai-memo` passes the resolved `course_context.ai_memo_evaluative_questions`), use those.
+2. **Else, if the assignment is the RDC**, resolve from `metadata.yaml.course_context.rdc_structure`:
+   - `sections`: ordered list of section names.
+   - `word_count_min` / `word_count_max`: bounds (inclusive).
+   - POLI SCI 210 defaults: 4 sections (Question and relevance / Research design / Their critique / What they'd change), 700–1000 words.
+3. **Else (standalone use, no metadata)**, ask the student which sections their rubric requires before opening this step.
+
+> **Adopter note:** an adopting team replaces `course_context.rdc_structure` (and `course_context.ai_memo_evaluative_questions`) in `metadata.yaml` with their own assignment shapes. This skill no longer hard-codes any specific assignment's structure — the inline POLI SCI 210 examples above are documentation of the defaults that ship with this repo, not assumptions about the calling course.
 
 - **Reconcile here:** when the student plans the first section's content, compare their main point against the main point you anticipated for that section. If their angle is different but defensible, log under `Divergences` and follow their angle; if it's structurally thin compared to your pre-read, use the gap to choose your follow-up question. Don't reveal your outline.
 
