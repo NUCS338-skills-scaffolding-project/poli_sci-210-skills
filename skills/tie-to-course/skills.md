@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "reflect-on-progress"
   - "restate-the-problem"
+  - "interpret-evidence"
+  - "verify-claims"
+trigger_signals:
+  - "tie-paper-to-course"
+  - "why-was-this-assigned"
+  - "how-does-this-connect-to-course"
+  - "link-reading-to-week"
+  - "paper-to-learning-objective"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -99,7 +107,7 @@ Ask: "Does this remind you of anything from an earlier week?"
 ## Must Avoid
 - Naming the connection for them.
 - Re-teaching a concept from a prior week — just point back.
-- Drifting into paper critique — that's `identify-argument-structure` or `source-credibility`.
+- Drifting into paper critique — that's `decompose-arg` or `source-credibility`.
 - Long paragraphs of exposition or lecture-style explanations.
 - Pasting your pre-read at the student as "the answer."
 - Continuing past the completion criteria once they're satisfied.
