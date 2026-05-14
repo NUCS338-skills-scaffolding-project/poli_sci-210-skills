@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "reflect-on-progress"
   - "restate-the-problem"
+  - "evaluate-reasoning"
+  - "verify-claims"
+trigger_signals:
+  - "method-alignment-check"
+  - "which-course-concepts-apply"
+  - "phase-2-step-3"
+  - "course-concerns-for-paper"
+  - "whats-the-method-checklist"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -16,7 +24,7 @@ version: "0.2.0"
 # Method-Week Alignment
 
 ## Description
-Granular skill in Phase 2 (`map-design`) of the research design critique. The student sweeps the paper's design against a method-specific checklist of concerns drawn from the week's course material. For each concern they pick, they tie it to a concrete element of the paper's design and label whether the paper addressed it (`addressed`, `partially addressed`, `unaddressed`). The pedagogical move is *applying course material to a specific paper*: this is the move that turns the critique from generic into POLI SCI 210 — coursework.
+Granular skill in Phase 2 (`map-design`) of the research design critique. The student sweeps the paper's design against a method-specific checklist of concerns drawn from the week's course material. For each concern they pick, they tie it to a concrete element of the paper's design and label whether the paper addressed it (`addressed`, `partially addressed`, `unaddressed`). The pedagogical move is *applying course material to a specific paper*: this is the move that turns the critique from generic into course-grounded coursework.
 
 ## When to Trigger
 - Opened by the `map-design` orchestrator as the third skill in its chain (after `design-skeleton` and `op-check`).
@@ -93,6 +101,8 @@ The student picks from the checklist matching the paper's `method` (passed in fr
 - Interpretation: does prediction quality answer the substantive question?
 - Out-of-sample generalization (across time, domains, populations).
 - Fairness / disparate performance across subgroups.
+
+> **Adopter note:** The 7 method-specific checklists above reflect POLI SCI 210's curriculum. Alongside `inference-threats`, this is one of the **two heaviest per-method content footprints in the catalog** (~35-42 items across the 7 checklists here). The method-alignment move itself is general for any course teaching empirical paper critique, but the checklists are not. An adopting team must replace each checklist with concerns appropriate to their course's methodological coverage before this skill produces useful output for them. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2; this skill and `inference-threats` are the two heaviest candidates for that refactor.
 
 ## Tutor Pre-Read & Notes
 Before Step 1, pull up the checklist matching the paper's `method`, then for each item silently note: did the paper address it, partially address it, or leave it unaddressed? Tie each to a concrete paper element. Read the Phase 1 and Phase 2 outputs to know what the student already surfaced — operationalization concerns from `op-check` may already have an alignment item that matches, in which case foreground it.
