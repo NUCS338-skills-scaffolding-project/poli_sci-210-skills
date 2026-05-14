@@ -9,10 +9,10 @@ learning_goal_tags:
   - "surface-assumptions"
   - "evaluate-reasoning"
   - "interpret-evidence"
-trigger_signalstrigger_signals:
+trigger_signals:
   - "orient-paper-ran"
-  - "first-pass-orient-skill-ran" 
-  - "trace-evidence-skill-ran"
+  - "first-pass-orient-ran"
+  - "trace-evidence-ran"
   - "discussing-strength-of-authors"
 python_entry: "logic.py"
 status: "ready"
@@ -47,6 +47,8 @@ Before Step 1, silently identify 3–4 contestable design choices in the paper. 
 - `large-n`: sample period, country/case selection, model specification, fixed effects, clustering of standard errors.
 - `small-n`: case selection logic, level of analysis, what counts as a within-case observation, comparison cases (or absence thereof).
 - `machine-learning`: training data, label definition, evaluation metric, train/test split logic, baseline comparison.
+
+> **Adopter note:** The 7 method categories above (and the matching `VALID_METHODS` tuple in `logic.py`) reflect POLI SCI 210's curriculum. The RDC chain itself is generic for any course teaching empirical paper critique, but the method tags and per-method probe content are not. An adopting team should swap these categories — and the corresponding `logic.py` tuple — to match their course's methodological coverage. A catalog-wide refactor (parameterizing the method list via `metadata.yaml.course_context.research_methods`) is logged for a future pass in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
