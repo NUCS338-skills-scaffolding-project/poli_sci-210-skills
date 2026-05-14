@@ -9,6 +9,12 @@ learning_goal_tags:
   - "evaluate-reasoning"
   - "surface-assumptions"
   - "engage-objections"
+trigger_signals:
+  - "does-my-argument-make-sense"
+  - "is-my-reasoning-strong"
+  - "logical-gaps-in-argument"
+  - "warrant-check"
+  - "evidence-claim-disconnect"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
