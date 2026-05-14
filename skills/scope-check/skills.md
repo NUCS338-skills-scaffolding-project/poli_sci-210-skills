@@ -9,6 +9,12 @@ learning_goal_tags:
   - "detect-ambiguity"
   - "surface-assumptions"
   - "evaluate-reasoning"
+trigger_signals:
+  - "scope-conditions-check"
+  - "where-doesnt-claim-hold"
+  - "external-validity-check"
+  - "phase-3-step-2"
+  - "generalization-limits"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -50,6 +56,8 @@ Method-aware emphasis (use as nudge categories):
 - `large-n`: temporal + population (the panel period and country selection).
 - `small-n`: contextual + population (which other cases would we expect this in?).
 - `machine-learning`: distribution shift across all five — population, temporal, contextual, dose (input intensity), outcome (label drift).
+
+> **Adopter note:** The 7 method-aware emphasis bullets above reflect POLI SCI 210's curriculum. The five scope categories themselves (population, temporal, contextual, manipulation/dose, outcome) are general across empirical paper critique, but the per-method nudges are not. An adopting team should swap these nudges to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 ## Tutor Pre-Read & Notes
 Before Step 1, read the paper's discussion / scope / external-validity section so you know what the paper claims about generalization and what it concedes. Read both prior phase logs. For each of the five scope categories, silently note: where could this claim plausibly fail to extend? Is the paper itself silent on it?
