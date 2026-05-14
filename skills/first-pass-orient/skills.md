@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "restate-the-problem"
   - "identify-evidence"
+  - "interpret-evidence"
+  - "evaluate-reasoning"
+trigger_signals:
+  - "whats-the-paper-about"
+  - "whats-the-main-argument"
+  - "phase-1-start"
+  - "cant-summarize-paper"
+  - "puzzle-and-answer"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -32,6 +40,8 @@ Granular skill in Phase 1 (`orient-paper`) of the research design critique. Forc
 
 ## Tutor Pre-Read & Notes
 Before Step 1, silently form your own one-sentence puzzle and one-sentence answer for THIS paper. Note what's load-bearing for the method (e.g., for `experiments`: the manipulation; for `surveys`: the population sampled and the question wording; for `small-n`: the case selection logic; for `theory-data`: the theoretical claim being tested vs. the empirical pattern).
+
+> **Adopter note:** The method-aware anchors throughout this skill (`experiments`, `surveys`, `theory-data`, `small-n`, etc.) reflect POLI SCI 210's 7-method curriculum. The puzzle/answer move itself is general for any empirical paper; the per-method nudges are not. An adopting team should swap the per-method probes to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
