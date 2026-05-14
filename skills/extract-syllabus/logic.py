@@ -7,11 +7,14 @@ Validates and normalizes the JSON returned by the prompt in skills.md.
 """
 from __future__ import annotations
 
-INPUT_SCHEMA: dict = {}
-
 import json
 import re
 from typing import Any
+
+
+INPUT_SCHEMA: dict = {
+    "llm_output": "str",  # raw text returned by the LLM for the prompt in skills.md
+}
 
 
 _ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -148,3 +151,24 @@ def _normalize_assignments(rows: Any, warnings: list[str]) -> list[dict[str, Any
             "recurrence": recurrence,
         })
     return out
+
+
+def run(input: dict) -> dict:
+    """Standard skill contract wrapper.
+
+    Delegates to ``parse_extraction``. The orchestrator's
+    ``syllabus_importer`` service calls ``parse_extraction`` directly; this
+    wrapper exists so adopters and harnesses invoking skills through the
+    standard ``run(input) -> dict`` contract get the same behavior.
+
+    :param input: dict with key ``llm_output`` (str) — the raw LLM response.
+    :return: dict ``{course, assignments, warnings}``.
+    :raises ParseError: if ``llm_output`` is not valid JSON.
+    :raises ValueError: if ``input`` shape is wrong.
+    """
+    if not isinstance(input, dict):
+        raise ValueError("input must be a dict")
+    llm_output = input.get("llm_output")
+    if not isinstance(llm_output, str):
+        raise ValueError("input['llm_output'] must be a string")
+    return parse_extraction(llm_output)

@@ -4,7 +4,14 @@ name: "Extract Syllabus"
 skill_type: "code"
 tags: ["import", "syllabus", "course-setup"]
 course_types: ["cs", "humanities"]
-learning_goal_tags: []
+learning_goal_tags:
+  - "extract-requirements"
+  - "specify-io"
+trigger_signals:
+  - "import-syllabus"
+  - "extract-syllabus-text"
+  - "bootstrap-course-from-syllabus"
+  - "parse-syllabus-pdf"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -14,6 +21,11 @@ version: "0.2.0"
 
 ## Description
 Extracts course metadata and an assignment list from raw syllabus text. Used by the orchestrator's `/syllabus/extract` endpoint to bootstrap a course's assignments from a PDF or pasted text.
+
+## When to Trigger
+- The orchestrator's `/syllabus/extract` endpoint receives a PDF upload or pasted syllabus text and needs to bootstrap a course's structured assignments.
+- An adopter wants to extract `{course, assignments, warnings}` JSON from a syllabus standalone, outside the parent orchestrator (see "Standalone Usage" below).
+- An automated import pipeline needs to convert syllabi from many courses into the registry's structured format.
 
 ## Inputs
 The orchestrator substitutes `{syllabus_text}` (below) with the full extracted PDF text or pasted block before sending to the LLM.
@@ -94,6 +106,10 @@ You are extracting structured data from a course syllabus. Read the syllabus tex
 ## Notes
 
 The orchestrator's `syllabus_importer` service substitutes `{syllabus_text}`, sends this to litellm with `temperature=0`, then hands the raw response to `logic.parse_extraction()` which validates and normalizes the result.
+
+### Architectural note for adopters
+
+This skill is consumed by the orchestrator via the `/syllabus/extract` endpoint backed by the `syllabus_importer` service, **not** via the standard `logic_loader.py` path used by most code skills. `logic.py` also exposes a thin `run(input: dict) -> dict` wrapper (delegating to `parse_extraction`) so that adopters and automated harnesses calling skills through the standard contract can invoke this one the same way. The wrapper expects `{"llm_output": <str>}` as input and returns the parsed `{course, assignments, warnings}` dict — see `INPUT_SCHEMA` in `logic.py`.
 
 ## Standalone Usage (Adopters)
 
