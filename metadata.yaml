@@ -27,9 +27,13 @@ course_context:
     - "Identify research designs and their strengths/weaknesses"
     - "Communicate research findings clearly"
 
-  # Weeks the course is in session (skips week 1 / reading periods).
-  # Read by: pick-week-concept (week-validity gate).
-  weeks_in_session: [2, 3, 4, 5, 6, 7, 8, 9]
+  # Weeks the course is in session (class meets). Note this is distinct
+  # from "weeks assignments are due" — week 1 has class but no AI memo /
+  # RDC assignment, for example.
+  # Read by: pick-week-concept (week-validity gate, against this list).
+  # Other skills (e.g., critique-design's WEEK_METHOD) constrain to a
+  # narrower assignment-bearing range as needed.
+  weeks_in_session: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   # Evaluative questions used as section anchors when scaffolding an AI memo.
   # Read by: ai-memo (Step 6, when handing off to scaffold-writing).

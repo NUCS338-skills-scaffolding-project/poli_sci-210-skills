@@ -2,7 +2,7 @@
 # Validates the student's chosen {week, concept, ai_prompt} and returns
 # a heuristic "done" gate for the orchestrator. No side effects.
 
-VALID_WEEKS = set(range(2, 10))  # 2..9 inclusive — week 1 is no-class, 10 is reading period
+VALID_WEEKS = set(range(1, 10))  # 1..9 inclusive — class is in session; week 10 is reading period
 
 # Topic-sized words that should not stand alone as the concept phrase.
 # This is a guardrail, not a vocabulary — narrowing is a tutor judgment.
@@ -39,7 +39,7 @@ INPUT_SCHEMA: dict = {
 def run(input):
   """
   :param input: {
-    "week": int | None,                    # 2..9
+    "week": int | None,                    # 1..9
     "concept_phrase": str | None,          # e.g. "social desirability bias"
     "ai_prompt": str | None,               # one-sentence "what to ask the AI"
     "has_hypothesis": bool | None,         # tutor flag: student named a course-vs-AI gap they expect
@@ -72,7 +72,7 @@ def run(input):
   if week_valid:
     done_reasons.append(f"week {week} is a valid course week")
   else:
-    observations.append("Week not yet set or out of range (2..9).")
+    observations.append("Week not yet set or out of range (1..9).")
 
   if concept_specific:
     done_reasons.append(f"concept '{concept}' is specific enough")

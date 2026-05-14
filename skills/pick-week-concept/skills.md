@@ -9,6 +9,12 @@ learning_goal_tags:
   - "extract-requirements"
   - "bound-scope"
   - "restate-the-problem"
+trigger_signals:
+  - "pick-ai-memo-concept"
+  - "narrow-to-concept"
+  - "ai-memo-step-1"
+  - "which-week-concept"
+  - "commit-to-memo-topic"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -74,8 +80,8 @@ Re-read the scratchpad each turn (or re-anchor mentally if held in memory). The 
 ## Flow
 
 ### Step 1 — Confirm the week
-Ask: "Which week are you doing the memo on?" Accept any week 2–9 (week 1 is no-class, week 10 is reading period).
-- If they name a valid week → load the slide PDF at the path resolved from `paths.slide_filename_pattern` (default `materials/slides/weekN-slides.pdf`), do the pre-read, then Step 2. If the file is missing, apply the **Adopter fallback (no slide file available)** from the Tutor Pre-Read section.
+Ask: "Which week are you doing the memo on?" Accept any week in the course's in-session range, resolved from `metadata.yaml.course_context.weeks_in_session` (POLI SCI 210 currently defaults to weeks 1–9; class is in session those weeks, even though AI memos and RDCs only kick in starting later). An adopting course may have a different range — `logic.py`'s `VALID_WEEKS` mirrors the metadata default.
+- If they name a valid in-session week → load the slide PDF at the path resolved from `paths.slide_filename_pattern` (default `materials/slides/weekN-slides.pdf`), do the pre-read, then Step 2. If the file is missing, apply the **Adopter fallback (no slide file available)** from the Tutor Pre-Read section.
 - If they don't know which week → ask what they've been to recently or what's been on their mind from the course.
 
 ### Step 2 — Anchor on what they remember · *reconcile beat*
