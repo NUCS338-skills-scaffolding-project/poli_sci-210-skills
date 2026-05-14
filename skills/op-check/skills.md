@@ -9,6 +9,12 @@ learning_goal_tags:
   - "verify-claims"
   - "surface-assumptions"
   - "evaluate-reasoning"
+trigger_signals:
+  - "op-check-measurement"
+  - "measure-feels-off"
+  - "phase-2-step-2"
+  - "concept-to-measure-gap"
+  - "operationalization-gap"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -17,7 +23,7 @@ version: "0.2.0"
 # Operationalization Check
 
 ## Description
-Granular skill in Phase 2 (`map-design`) of the research design critique. The student picks 1–2 of the design's key concepts and interrogates how the paper measures them: what the operationalization includes that arguably shouldn't be in, what it excludes that arguably should be in, and how load-bearing the gap is. The pedagogical move is *bridging concept to measure*: this is where the strongest empirical critiques almost always live, including Bryan's example "the billionaire-politician definition feels loose."
+Granular skill in Phase 2 (`map-design`) of the research design critique. The student picks 1–2 of the design's key concepts and interrogates how the paper measures them: what the operationalization includes that arguably shouldn't be in, what it excludes that arguably should be in, and how load-bearing the gap is. The pedagogical move is *bridging concept to measure*: this is where the strongest empirical critiques almost always live — definitions that are arguably-loose, indices that lump distinct constructs, measures whose includes/excludes don't track the concept.
 
 ## When to Trigger
 - Opened by the `map-design` orchestrator as the second skill in its chain (after `design-skeleton`).
@@ -44,6 +50,8 @@ Method-aware focus areas:
 - `large-n`: indices and composite measures, country-level proxies, time-aggregation choices.
 - `small-n`: what counts as evidence of a within-case mechanism; coding of the case as "outcome present/absent."
 - `machine-learning`: label definition (what's labeled as positive/negative), feature definition.
+
+> **Adopter note:** The 7 method-aware focus areas above reflect POLI SCI 210's curriculum. The concept-to-measure bridging move is general for any empirical paper critique, but the per-method foci are not. An adopting team should swap these to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
