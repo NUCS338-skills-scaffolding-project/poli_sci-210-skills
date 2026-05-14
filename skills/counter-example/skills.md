@@ -13,6 +13,8 @@ trigger_signals:
   - "student-overgeneralizes"
   - "student-asserts-absolute"
   - "student-defending-first-position"
+  - "always-statement-made"
+  - "student-hedging-on-claim"
 status: "ready"
 version: "0.2.0"
 ---
