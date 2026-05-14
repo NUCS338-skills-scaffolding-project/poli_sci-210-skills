@@ -9,6 +9,12 @@ learning_goal_tags:
   - "decompose-arguments"
   - "identify-evidence"
   - "interpret-evidence"
+trigger_signals:
+  - "map-design-phase"
+  - "understand-methodology"
+  - "phase-2-start"
+  - "extract-research-design"
+  - "whats-the-design-doing"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -114,7 +120,7 @@ Same pattern as `orient-paper`. Use `Agent` tool with `subagent_type=general-pur
 
 ```
 You are doing a silent pre-read for the granular skill `<NEXT_SKILL_ID>` in
-the map-design phase of a POLI SCI 210 research design critique.
+the map-design phase of a research design critique.
 
 Inputs:
 - Article: <ABSOLUTE_PATH_TO_ARTICLE>
