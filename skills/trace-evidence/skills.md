@@ -9,6 +9,12 @@ learning_goal_tags:
   - "identify-evidence"
   - "interpret-evidence"
   - "verify-claims"
+trigger_signals:
+  - "trace-claim-to-evidence"
+  - "find-the-headline-finding"
+  - "where-is-the-evidence"
+  - "phase-1-step-2"
+  - "read-the-tables"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -34,6 +40,8 @@ Granular skill in Phase 1 (`orient-paper`) of the research design critique. Forc
 
 ## Tutor Pre-Read & Notes
 Before Step 1, silently identify the paper's headline empirical claim, find which table/figure/section it lives in, and read what the evidence actually shows. Note any abstract/table mismatch. Method-aware: for `experiments` the locus is usually a treatment-effect table; `surveys` → cross-tabs or regression with descriptive support; `large-n` → coefficient plot or main regression table; `small-n` → process-tracing narrative section, often paragraph-length passages rather than a table; `machine-learning` → performance table, confusion matrix, or held-out evaluation; `theory-data` → the empirical-pattern figure or test case; `inference` → the comparison table that anchors the causal claim.
+
+> **Adopter note:** The 7 method-aware locus patterns above reflect POLI SCI 210's curriculum. The trace-claim-to-evidence move is general for any empirical paper, but the per-method locus expectations are not. An adopting team should swap these to match their course's methodological coverage. A catalog-wide refactor is logged in `docs/audits/cross-cutting.md` entry CC-2.
 
 **Default scratchpad path** (resolved from `paths.scratch_pattern` in `metadata.yaml`):
 
