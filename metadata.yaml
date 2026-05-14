@@ -64,21 +64,29 @@ course_context:
   # Research methods recognized by the RDC chain's validators and the
   # per-method content in 10 RDC skills (catalogs, checklists, focus areas,
   # locus expectations, etc.). This is the canonical list. Each affected
-  # logic.py reads it at module load and uses it as the source of truth
-  # for VALID_METHODS, with a hard-coded POLI SCI 210 default as a
-  # defensive fallback when metadata is unreadable. An adopting team
-  # replaces this list to match their course's methodological coverage;
-  # the in-skill prose content (per-method nudges) still requires
-  # adopter edits skill-by-skill — see cross-cutting.md CC-2 for the
-  # full refactor proposal that would parameterize the prose too.
+  # logic.py reads `id` values from this list at module load and uses them
+  # as the source of truth for VALID_METHODS, with a hard-coded POLI SCI 210
+  # default as a defensive fallback when metadata is unreadable.
+  #
+  # Each entry has:
+  #   - id: kebab-case tag used in code and inline references (load-bearing)
+  #   - label: human-readable name (informational; for adopter docs / future UI use)
+  #
+  # An adopting team replaces this list to match their course's methodological
+  # coverage; the in-skill prose content (per-method nudges) still requires
+  # adopter edits skill-by-skill — see cross-cutting.md CC-2 for the full
+  # refactor proposal that would parameterize the prose too. Backward
+  # compatibility: each logic.py also accepts a bare-string list form
+  # (`research_methods: ["theory-data", ...]`) if the adopter doesn't need
+  # labels.
   research_methods:
-    - "theory-data"
-    - "inference"
-    - "surveys"
-    - "experiments"
-    - "large-n"
-    - "small-n"
-    - "machine-learning"
+    - {id: "theory-data",      label: "Theory & Data"}
+    - {id: "inference",        label: "Causal Inference"}
+    - {id: "surveys",          label: "Surveys"}
+    - {id: "experiments",      label: "Experiments"}
+    - {id: "large-n",          label: "Large-N Quantitative"}
+    - {id: "small-n",          label: "Small-N Qualitative"}
+    - {id: "machine-learning", label: "Machine Learning"}
 
 # ---------------------------------------------------------------------------
 # paths — filesystem conventions for course materials and per-student outputs.

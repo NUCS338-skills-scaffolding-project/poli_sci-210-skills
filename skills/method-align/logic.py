@@ -24,8 +24,18 @@ def _load_valid_methods():
         with open(md_path) as f:
             md = yaml.safe_load(f) or {}
         methods = (md.get("course_context") or {}).get("research_methods")
-        if isinstance(methods, list) and methods and all(isinstance(m, str) for m in methods):
-            return tuple(methods)
+        if not isinstance(methods, list) or not methods:
+            return _DEFAULT
+        ids = []
+        for m in methods:
+            if isinstance(m, str):
+                ids.append(m)
+            elif isinstance(m, dict) and isinstance(m.get("id"), str):
+                ids.append(m["id"])
+            else:
+                return _DEFAULT
+        return tuple(ids) if ids else _DEFAULT
+    except Exception:
         return _DEFAULT
     except Exception:
         return _DEFAULT
