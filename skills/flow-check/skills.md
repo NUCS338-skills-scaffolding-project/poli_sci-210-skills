@@ -8,6 +8,14 @@ course_types: ["humanities"]
 learning_goal_tags:
   - "evaluate-reasoning"
   - "structure-paragraphs"
+  - "construct-arguments"
+  - "ensure-cohesion"
+trigger_signals:
+  - "essay-feels-disjointed"
+  - "does-this-make-sense"
+  - "section-order-unclear"
+  - "logical-flow-broken"
+  - "argument-progression"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
