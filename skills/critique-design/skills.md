@@ -9,6 +9,12 @@ learning_goal_tags:
   - "evaluate-reasoning"
   - "surface-assumptions"
   - "engage-objections"
+trigger_signals:
+  - "start-rdc"
+  - "rdc-week-N"
+  - "research-design-critique-assignment"
+  - "need-to-critique-paper"
+  - "starting-weekly-critique"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -94,6 +100,8 @@ Append per-phase blocks as each phase orchestrator completes; finalize the Synth
 Ask the student which week they're working on, or which paper. Resolve week → method via the table in `logic.py`. If the student supplies a PDF that isn't one of the seven assigned articles, push back — the assignment specifies the seven papers.
 
 Confirm in one line: "You're critiquing <paper_short> for Week <N> (<method>)? Path: <article_path>?"
+
+> **Adopter note:** the `WEEK_METHOD` dictionary in `logic.py` hard-codes POLI SCI 210's syllabus — 7 specific weeks mapped to 7 specific papers and method tags. The RDC chain (`orient-paper` → `map-design` → `form-critique` → `scaffold-writing`) is generic for any course teaching empirical paper critique, but `WEEK_METHOD` is not. An adopting team must replace the `WEEK_METHOD` dictionary with their own week → (method, paper_short) mapping before this orchestrator will work for them. A catalog-wide refactor (parameterizing both the method-tag list and the syllabus mapping via `metadata.yaml.course_context`) is logged for a future pass in `docs/audits/cross-cutting.md` entry CC-2.
 
 Call `logic.py` with `week=None, article_path=None` first if the student hasn't supplied either, to confirm identification is needed. If the student can't name the week or doesn't have the PDF, end the skill — they need to consult the rubric and find their week's article first.
 
