@@ -3,12 +3,18 @@ skill_id: "scaffold-writing"
 name: "Scaffold Written Assignment"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["writing", "scaffolding"]
+tags: ["writing", "scaffolding", "structure", "essay-planning"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "extract-requirements"
   - "bound-scope"
   - "structure-paragraphs"
+trigger_signals:
+  - "scaffold-my-writing"
+  - "how-should-i-structure"
+  - "is-this-structure-right"
+  - "essay-structure-help"
+  - "writing-scaffold"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -73,11 +79,13 @@ Before structure, ask: "what do you want your critique's main point to be?"
 - If they don't → ask 2–3 probing questions about the study until a point emerges. Don't suggest the point yourself.
 
 ### Step 3 — Walk structure one section at a time · *reconcile beat*
-Name each section they need, ask what they plan to put in it, then move on. Only go to the next section once they have a rough plan for the current one. For the 700–1000 word critique, typical order:
+Name each section they need, ask what they plan to put in it, then move on. Only go to the next section once they have a rough plan for the current one. For the 700–1000 word critique (POLI SCI 210's RDC assignment shape), typical order:
 1. Question and relevance
 2. Research design (as the authors did it)
 3. Their critique (main point + evidence)
 4. What they'd change
+
+> **Adopter note:** the 4-section structure above and the 700–1000 word count are POLI SCI 210's RDC assignment shape. For the AI memo (also POLI SCI 210), the section anchors are resolved from `metadata.yaml.course_context.ai_memo_evaluative_questions` (see the `ai-memo` orchestrator's Step 6). An adopting team should pass the relevant assignment's section names and main-point expectations from the calling orchestrator, or — for standalone use — ask the student which sections their rubric requires before opening Step 3 here.
 
 - **Reconcile here:** when the student plans the first section's content, compare their main point against the main point you anticipated for that section. If their angle is different but defensible, log under `Divergences` and follow their angle; if it's structurally thin compared to your pre-read, use the gap to choose your follow-up question. Don't reveal your outline.
 
