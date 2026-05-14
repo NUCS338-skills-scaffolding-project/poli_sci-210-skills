@@ -3,11 +3,18 @@ skill_id: "concept-example"
 name: "Connect Concept to Example"
 skill_type: "instructional"
 stance: "socratic"
-tags: ["concepts", "application"]
+tags: ["concepts", "application", "definition", "quiz-prep"]
 course_types: ["humanities"]
 learning_goal_tags:
   - "verify-claims"
   - "surface-assumptions"
+  - "evaluate-reasoning"
+trigger_signals:
+  - "concept-not-applied"
+  - "i-think-i-understand-but"
+  - "quiz-prep-application"
+  - "test-my-concept-grasp"
+  - "give-me-an-example"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
