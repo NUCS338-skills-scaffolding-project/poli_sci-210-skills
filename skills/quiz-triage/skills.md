@@ -13,6 +13,8 @@ trigger_signals:
   - "ran-out-of-time"
   - "low-quiz-score-despite-knowing-material"
   - "stuck-on-one-question"
+  - "during-quiz-strategy"
+  - "quiz-time-management"
 status: "ready"
 version: "0.2.0"
 ---
