@@ -9,6 +9,12 @@ learning_goal_tags:
   - "identify-evidence"
   - "interpret-evidence"
   - "restate-the-problem"
+trigger_signals:
+  - "orient-paper-phase"
+  - "get-oriented-to-paper"
+  - "phase-1-orchestrator"
+  - "investigate-reading"
+  - "understand-what-paper-does"
 python_entry: "logic.py"
 status: "ready"
 version: "0.2.0"
@@ -104,7 +110,7 @@ Whenever a sub-skill N opens for dialogue, dispatch a subagent in parallel to pr
 
 ```
 You are doing a silent pre-read for the granular skill `<NEXT_SKILL_ID>` in
-the orient-paper phase of a POLI SCI 210 research design critique.
+the orient-paper phase of a research design critique.
 
 Inputs:
 - Article: <ABSOLUTE_PATH_TO_ARTICLE>
